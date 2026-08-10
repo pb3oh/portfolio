@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Phillip — Product Leadership</title>
+<meta name="description" content="Product leader building and scaling AI platforms and the teams behind them." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Geist', 'ui-sans-serif', 'system-ui'],
+          serif: ['"Instrument Serif"', 'ui-serif', 'Georgia'],
+          mono: ['"JetBrains Mono"', 'ui-monospace'],
+        },
+        colors: {
+          ink: {
+            DEFAULT: '#1a1a1a',
+            soft:    '#2a2a2a',
+            muted:   '#6b6b6b',
+            faint:   '#9a9a9a',
+            line:    '#e7e5e2',
+            paper:   '#fafaf8',
+          },
+          accent: '#b8542a',
+        },
+        letterSpacing: { tightest: '-0.04em' },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-feature-settings: "ss01", "ss02", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .rule { height: 1px; background: #e7e5e2; }
+
+  .dot {
+    width: 6px; height: 6px; border-radius: 9999px;
+    background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.18);
+    display:inline-block;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .d-1 { animation-delay: 0.05s; }
+  .d-2 { animation-delay: 0.15s; }
+  .d-3 { animation-delay: 0.25s; }
+  .d-4 { animation-delay: 0.35s; }
+  .d-5 { animation-delay: 0.45s; }
+
+  .case { transition: border-color 0.4s ease; }
+  .case:hover { border-color: #1a1a1a; }
+  .case:hover .case-arrow { transform: translateX(4px); }
+  .case-arrow { transition: transform 0.3s ease; display: inline-block; }
+
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+  }
+  .link:hover { background-size: 100% 2px; }
+
+  .label {
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+  }
+
+  .paper {
+    background-color: #fafaf8;
+    background-image: radial-gradient(rgba(0,0,0,0.018) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .cta {
+    position: relative; overflow: hidden;
+    background: #1a1a1a; color: #fafaf8; border-color: #1a1a1a;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: cta-halo 2.8s ease-in-out infinite;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 26px -12px rgba(26,26,26,0.5); animation-play-state: paused; }
+  .cta:hover .cta-arrow { transform: translate(2px, -2px); }
+  .cta-arrow { transition: transform 0.25s ease; display: inline-block; animation: cta-nudge 2.8s ease-in-out infinite; }
+  /* shimmer sweep */
+  .cta::after {
+    content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
+    transform: skewX(-18deg); animation: cta-shimmer 2.8s ease-in-out infinite;
+  }
+  @keyframes cta-halo {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(184,84,42,0.45); }
+    55%      { box-shadow: 0 0 0 7px rgba(184,84,42,0); }
+  }
+  @keyframes cta-nudge {
+    0%, 82%, 100% { transform: translate(0, 0); }
+    88%           { transform: translate(3px, -3px); }
+    94%           { transform: translate(1px, -1px); }
+  }
+  @keyframes cta-shimmer {
+    0%, 32% { left: -60%; }
+    62%, 100% { left: 130%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta, .cta-arrow, .cta::after { animation: none; }
+  }
+
+  /* Sticky top bar */
+  .site-nav {
+    background: rgba(250, 250, 248, 0.72);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .site-nav.scrolled {
+    border-bottom-color: #e7e5e2;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 10px 30px -24px rgba(0,0,0,0.35);
+    background: rgba(250, 250, 248, 0.88);
+  }
+</style>
+</head>
+
+<body class="paper text-ink font-sans antialiased">
+
+<div class="sticky top-0 z-50 site-nav">
+  <nav class="max-w-6xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 text-sm tracking-tight">
+      <span class="font-medium">Phillip</span>
+      <span class="text-ink-faint">/</span>
+      <span class="text-ink-muted">Product Leadership</span>
+    </a>
+    <div class="hidden sm:flex items-center gap-8 text-sm text-ink-muted">
+      <a href="#principles"          class="hover:text-ink transition">Principles</a>
+      <a href="./portfolio.html"     class="hover:text-ink transition">Selected Work</a>
+      <a href="#contact"             class="hover:text-ink transition">Contact</a>
+    </div>
+  </nav>
+</div>
+
+<header class="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
+
+  <h1 class="rise d-2 text-[44px] sm:text-[76px] leading-[1.02] tracking-tightest font-light max-w-4xl">
+    Building the connective tissue between
+    <span class="font-serif italic text-accent" style="color: #B8542A">human intelligence</span>
+    and
+    <span class="font-serif italic">artificial intelligence</span>.
+  </h1>
+
+  <p class="rise d-3 mt-10 max-w-2xl text-lg sm:text-xl text-ink-soft leading-relaxed font-light">
+    I design and ship multi-agent platforms that augment expert work — at the scale,
+    latency, and governance bar enterprises actually require. Most recently leading
+    the AI-native expert platform at Intuit.
+  </p>
+
+  <div class="rise d-4 mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
+    <a href="./portfolio.html" class="cta inline-flex items-center gap-3 px-5 py-3 border border-ink rounded-full font-medium" style="color: #fafaf8;">
+      <span class="relative z-10">View selected work</span>
+      <span class="cta-arrow text-base leading-none relative z-10">↗</span>
+    </a>
+    <a href="https://github.com/pb3oh" class="link text-ink-muted hover:text-ink transition inline-flex items-center gap-2">
+      GitHub
+    </a>
+    <a href="#contact" class="link text-ink-muted hover:text-ink transition">Get in touch</a>
+  </div>
+
+</header>
+
+<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<section id="principles" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+
+  <div class="grid grid-cols-12 gap-y-12 sm:gap-x-12">
+
+    <div class="col-span-12 sm:col-span-4">
+      <p class="label mb-4">§ 01</p>
+      <h2 class="text-3xl sm:text-4xl tracking-tight font-light leading-[1.1]">
+        My AI-Native<br/>Principles
+      </h2>
+      <p class="mt-6 text-ink-muted text-sm leading-relaxed max-w-xs">
+        A working philosophy formed shipping production AI to millions of customers
+        and tens of thousands of financial experts.
+      </p>
+    </div>
+
+    <div class="col-span-12 sm:col-span-8 space-y-12">
+
+      <article class="grid grid-cols-12 gap-6 items-start">
+        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">01</span></div>
+        <div class="col-span-10 sm:col-span-11">
+          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
+            Agentic workflows over monolithic prompts.
+          </h3>
+          <p class="mt-3 text-ink-muted leading-relaxed">
+            Real work decomposes into roles, tools, and handoffs. I design systems
+            where specialized agents plan, retrieve, act, and verify — with
+            deterministic checkpoints between the probabilistic steps.
+          </p>
+        </div>
+      </article>
+
+      <article class="grid grid-cols-12 gap-6 items-start">
+        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">02</span></div>
+        <div class="col-span-10 sm:col-span-11">
+          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
+            Governance-by-design, not as an audit afterthought.
+          </h3>
+          <p class="mt-3 text-ink-muted leading-relaxed">
+            Eval harnesses, policy gates, lineage, and red-team coverage live in the
+            same repo as the agent graph. If it can't be measured and attested, it
+            doesn't ship to regulated customers.
+          </p>
+        </div>
+      </article>
+
+      <article class="grid grid-cols-12 gap-6 items-start">
+        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">03</span></div>
+        <div class="col-span-10 sm:col-span-11">
+          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
+            Human-centric orchestration. The expert stays in the loop.
+          </h3>
+          <p class="mt-3 text-ink-muted leading-relaxed">
+            The most valuable AI surfaces don't replace the professional — they
+            compound them. I build for the CPA, the analyst, the underwriter:
+            confidence over autonomy, traceability over magic.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<section id="work-teaser" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+
+  <div class="flex items-baseline justify-between mb-16">
+    <div>
+      <p class="label mb-4">§ 02</p>
+      <h2 class="text-3xl sm:text-4xl tracking-tight font-light">
+        Selected work.
+      </h2>
+      <p class="mt-4 max-w-xl text-ink-muted">
+        Four case studies, organized as one strategy: the expert platform, the
+        consumer surface, the distribution play, and a planning tool built
+        end-to-end.
+      </p>
+    </div>
+    <a href="./portfolio.html" class="hidden sm:inline-flex items-center gap-2 text-sm link text-ink">
+      All work <span class="text-base leading-none">↗</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink-line border border-ink-line">
+
+    <a href="./portfolio.html#iep" class="case bg-paper p-8 sm:p-10 group">
+      <p class="label">Case 01 · Platform</p>
+      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
+        AI-Native <span class="font-serif italic">Expert Platform</span>.
+      </h3>
+      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
+        Reimagining a tool-centric expert system as an AI-first workspace built
+        around a single assistant — and the portable platform layer underneath
+        it.
+      </p>
+      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
+        Read case study <span class="case-arrow">→</span>
+      </p>
+    </a>
+
+    <a href="./portfolio.html#omni" class="case bg-paper p-8 sm:p-10 group">
+      <p class="label">Case 02 · Consumer surface</p>
+      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
+        <span class="font-serif italic">Intuit Intelligence</span> for small business.
+      </h3>
+      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
+        Aligning the customer-facing assistant with the expert platform's
+        capability catalog and quality bar, so both behave consistently.
+      </p>
+      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
+        Read case study <span class="case-arrow">→</span>
+      </p>
+    </a>
+
+    <a href="./portfolio.html#third-party" class="case bg-paper p-8 sm:p-10 group">
+      <p class="label">Case 03 · Distribution</p>
+      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
+        Intuit inside <span class="font-serif italic">ChatGPT</span> &amp; <span class="font-serif italic">Claude</span>.
+      </h3>
+      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
+        Headless, portable capabilities that make TurboTax and QuickBooks actionable
+        inside the AI assistants customers already use.
+      </p>
+      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
+        Read case study <span class="case-arrow">→</span>
+      </p>
+    </a>
+
+  </div>
+
+  <div class="mt-10 sm:hidden">
+    <a href="./portfolio.html" class="link text-ink font-medium">View all case studies ↗</a>
+  </div>
+
+  <p class="mt-12 text-sm text-ink-muted max-w-2xl">
+    Plus the pre-Intuit track — <a href="./portfolio.html#diversyfund" class="link text-ink">VP of Product Development at DiversyFund</a>,
+    then the <a href="./portfolio.html#ventures" class="link text-ink">founder chapter</a>:
+    a digital holding company with nine consumer brands, a vertical SaaS CRM
+    for fitness studios, and a crypto sentiment platform.
+  </p>
+
+</section>
+
+<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<section id="contact" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
+  <div class="grid grid-cols-12 gap-y-10 sm:gap-x-12">
+
+    <div class="col-span-12 sm:col-span-7">
+      <p class="label mb-6">§ 03 · Now</p>
+      <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-3xl">
+        Leading product organizations
+        <span class="font-serif italic text-ink-muted" style="color: #B8542A">where the AI surface is the product.</span>
+      </h2>
+    </div>
+
+    <div class="col-span-12 sm:col-span-5 sm:pt-2">
+      <p class="label mb-4">Reach out</p>
+      <ul class="space-y-3 text-lg">
+        <li><a href="mailto:philnb331@gmail.com" class="link">philnb331@gmail.com</a></li>
+        <li><a href="https://github.com/pb3oh" class="link">github.com/pb3oh</a></li>
+        <li><a href="https://www.linkedin.com/in/phil-b-b0586147" class="link">linkedin.com/in/phil-b-b0586147</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
+  <div class="rule mb-6"></div>
+  <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-ink-faint">
+    <p>© 2026 Phillip. Details generalized where under NDA.</p>
+    <p class="font-mono">last updated Jul 2026</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    const nav = document.querySelector('.site-nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

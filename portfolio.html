@@ -1,0 +1,1331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selected Work — Phillip</title>
+<meta name="description" content="Eight case studies. One strategic bet: AI does the work, humans do the thinking." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans:  ['Geist', 'ui-sans-serif', 'system-ui'],
+          serif: ['"Instrument Serif"', 'ui-serif', 'Georgia'],
+          mono:  ['"JetBrains Mono"', 'ui-monospace'],
+        },
+        colors: {
+          ink: {
+            DEFAULT: '#1a1a1a',
+            soft:    '#2a2a2a',
+            muted:   '#6b6b6b',
+            faint:   '#9a9a9a',
+            line:    '#e7e5e2',
+            paper:   '#fafaf8',
+          },
+          accent: '#b8542a',
+        },
+        letterSpacing: { tightest: '-0.04em' },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-feature-settings: "ss01","ss02","cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .rule { height: 1px; background: #e7e5e2; }
+  .label {
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+  }
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+  }
+  .link:hover { background-size: 100% 2px; }
+  .paper {
+    background-color: #fafaf8;
+    background-image: radial-gradient(rgba(0,0,0,0.018) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .rise { animation: rise 0.9s cubic-bezier(0.2,0.7,0.2,1) both; }
+
+  .frame {
+    background: white;
+    border: 1px solid #e7e5e2;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 16px 40px -24px rgba(0,0,0,0.12);
+  }
+  .frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .frame-caption {
+    padding: 12px 16px;
+    border-top: 1px solid #f0eeea;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+  }
+  /* Aligned frame pair: equal height, image centered, captions bottom-aligned */
+  .frames-aligned { align-items: stretch; }
+  .frames-aligned .frame { display: flex; flex-direction: column; }
+  .frames-aligned .frame img { margin-block: auto; }
+  .frames-aligned .frame-caption { margin-top: 0; }
+
+  .toc a {
+    display: block;
+    padding: 6px 0;
+    color: #6b6b6b;
+    transition: color 0.2s ease;
+    font-size: 13px;
+  }
+  .toc a:hover { color: #1a1a1a; }
+  .toc a.active { color: #1a1a1a; font-weight: 500; }
+  .toc a.toc-sub { padding-left: 14px; font-size: 12px; color: #9a9a9a; }
+  .toc a.toc-sub .toc-num { width: 18px; }
+  .toc-num {
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 10px;
+    color: #c4c1bc;
+    display: inline-block;
+    width: 24px;
+  }
+
+  .feature-link {
+    position: relative;
+    background: linear-gradient(180deg, #fff 0%, #fdf6f2 100%);
+    border-color: color-mix(in srgb, #b8542a 32%, #e7e5e2) !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 18px 40px -30px rgba(184,84,42,0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .feature-link:hover {
+    transform: translateY(-3px);
+    border-color: #b8542a !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 30px 60px -32px rgba(184,84,42,0.62);
+  }
+  .feature-link:hover .arr { transform: translate(3px,-3px); }
+  .arr { display:inline-block; transition: transform 0.25s ease; }
+
+  /* Live badge on the walkthrough / prototype cards */
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #b8542a;
+  }
+  .live-badge .live-dot {
+    width: 7px; height: 7px; border-radius: 999px; background: #b8542a;
+    box-shadow: 0 0 0 0 rgba(184,84,42,0.5);
+    animation: live-pulse 1.9s ease-out infinite;
+  }
+  @keyframes live-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(184,84,42,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(184,84,42,0); }
+    100% { box-shadow: 0 0 0 0 rgba(184,84,42,0); }
+  }
+  /* Solid accent CTA inside the cards */
+  .cta-solid {
+    background: #b8542a; color: #fff; border-color: #b8542a !important;
+    box-shadow: 0 10px 24px -12px rgba(184,84,42,0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .feature-link:hover .cta-solid { transform: translateY(-1px); box-shadow: 0 14px 30px -12px rgba(184,84,42,0.85); }
+  @media (prefers-reduced-motion: reduce) {
+    .live-badge .live-dot { animation: none; }
+    .feature-link, .feature-link:hover { transform: none; }
+  }
+
+  /* Brand portfolio roster */
+  .brand-row {
+    display: grid;
+    grid-template-columns: 28px 44px 1fr;
+    grid-template-areas:
+      "idx mark name"
+      "idx mark cat"
+      "idx mark tag";
+    align-items: center;
+    gap: 2px 18px;
+    padding: 18px 8px;
+    border-bottom: 1px solid #e7e5e2;
+    transition: background 0.25s ease, padding 0.25s ease;
+  }
+  .brand-row:hover { background: #f3f1ed; padding-left: 16px; }
+  .brand-idx {
+    grid-area: idx;
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 11px;
+    color: #c4c1bc;
+    letter-spacing: 0.05em;
+    align-self: center;
+  }
+  .brand-mark {
+    grid-area: mark;
+    width: 14px; height: 14px;
+    border-radius: 4px;
+    background: var(--brand, #9a9a9a);
+    justify-self: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .brand-row { position: relative; }
+  .brand-row::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--brand, transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .brand-row:hover::before { opacity: 1; }
+  .brand-row:hover .brand-mark {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 18%, transparent);
+  }
+  .brand-name {
+    grid-area: name;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+  }
+  .brand-cat { grid-area: cat; color: #6b6b6b; font-size: 14px; }
+  .brand-tag {
+    grid-area: tag;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+  }
+  /* Wider screens: single row — name | category | tag spread out */
+  @media (min-width: 768px) {
+    .brand-row {
+      grid-template-columns: 34px 40px max-content minmax(0, 1fr) max-content;
+      grid-template-areas: "idx mark name cat tag";
+      gap: 0 20px;
+      padding: 22px 8px;
+    }
+    .brand-tag { margin-top: 0; justify-self: end; white-space: nowrap; }
+    .brand-cat { justify-self: start; white-space: nowrap; }
+  }
+
+  /* Omni two-column split: screenshot left, roster right */
+  .omni-split { display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+  .omni-left, .omni-right { width: 100%; }
+  @media (min-width: 1024px) {
+    .omni-split { flex-direction: row; gap: 48px; align-items: stretch; }
+    .omni-left  { flex: 0 0 40%; max-width: 40%; }
+    .omni-right { flex: 1 1 auto; display: flex; flex-direction: column; }
+  }
+
+  /* Omni focus areas — full-width landscape, three sections */
+  .omni-focus { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #1a1a1a; margin-top: 2.75rem; }
+  .omni-focus-cell { padding: 26px 30px 10px 0; border-right: 1px solid #e7e5e2; }
+  .omni-focus-cell:not(:first-child) { padding-left: 30px; }
+  .omni-focus-cell:last-child { border-right: 0; padding-right: 0; }
+  .omni-focus-num { font-family: 'JetBrains Mono', ui-monospace; font-size: 11px; letter-spacing: 0.06em; color: #c4c1bc; }
+  .omni-focus-label { font-family: 'JetBrains Mono', ui-monospace; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: #b8542a; margin-top: 14px; }
+  .omni-focus-desc { margin-top: 10px; color: #4a4a4a; font-size: 15px; line-height: 1.55; }
+  @media (max-width: 760px) {
+    .omni-focus { grid-template-columns: 1fr; }
+    .omni-focus-cell { border-right: 0; border-bottom: 1px solid #e7e5e2; padding: 22px 0; }
+    .omni-focus-cell:not(:first-child) { padding-left: 0; }
+    .omni-focus-cell:last-child { border-bottom: 0; }
+  }
+  /* Acquired indicator on portfolio rows */
+  .brand-acq { font-family: 'JetBrains Mono', ui-monospace; font-size: 8.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #5b9e7a; border: 1px solid color-mix(in srgb, #5b9e7a 42%, transparent); border-radius: 999px; padding: 2px 7px; margin-left: 0; vertical-align: middle; white-space: nowrap; flex: 0 0 auto; }
+  /* Roster rows: compact 2-line layout so they fit the narrow column with no overlap */
+  .omni-roster { flex: 1 1 auto; display: flex; flex-direction: column; }
+  .omni-roster .brand-row {
+    grid-template-columns: 28px 40px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "idx mark name name"
+      "idx mark cat  tag";
+    gap: 5px 18px;
+    padding: 16px 8px;
+    align-items: center;
+    flex: 1 1 0;
+    align-content: center;
+  }
+  .omni-roster .brand-name { white-space: nowrap; }
+  .omni-roster .brand-cat { justify-self: start; white-space: nowrap; }
+  .omni-roster .brand-tag { grid-area: tag; justify-self: end; margin-top: 0; white-space: nowrap; }
+
+  .pill {
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    background: #f3f1ed;
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+
+  /* Sub-section within a combined case — the "movement" divider */
+  .subsection {
+    margin-top: 3.25rem;
+    scroll-margin-top: 3rem;
+  }
+  /* Feature rows (capability lists) */
+  .feat { padding-top: 14px; border-top: 1px solid #ece9e4; }
+  .feat-term { font-family: 'JetBrains Mono', ui-monospace; font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: #1a1a1a; }
+  .feat-desc { margin-top: 7px; color: #6b6b6b; font-size: 14px; line-height: 1.55; }
+  .subsection-eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b8542a;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* Case sections read as a connected sequence — spacing, not rules, marks a new case */
+  .page-main > section + section,
+  .page-main > section:not(:first-child) {
+    padding-top: 8.5rem;
+  }
+  @media (max-width: 640px) {
+    .page-main > section:not(:first-child) { padding-top: 5rem; }
+  }
+
+  /* ── Main page layout (Tailwind-independent, mobile-safe) ── */
+  .page-layout { display: block; }
+  .page-main { min-width: 0; }           /* allow flex/blocks to shrink below content width */
+  .page-main > section, .page-main > * { min-width: 0; max-width: 100%; }
+  @media (min-width: 1024px) {
+    .page-layout { display: flex; gap: 40px; align-items: flex-start; }
+    .page-aside { flex: 0 0 200px; width: 200px; align-self: stretch; }
+    .page-main  { flex: 1 1 auto; min-width: 0; }
+  }
+  @media (min-width: 1280px) {
+    .page-aside { flex-basis: 168px; width: 168px; }
+  }
+
+  /* ── Decision cards: self-contained flip cards ── */
+  .bridge-lead {
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+    color: #1a1a1a;
+    max-width: 40ch;
+    margin: 14px 0 6px;
+  }
+  .bridge-lead em { font-style: italic; font-family: 'Instrument Serif', serif; }
+
+  .pillar-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 22px;
+    margin-top: 26px;
+  }
+  .pcard { height: 372px; cursor: pointer; position: relative; }
+  .pcard:focus-visible { outline: 2px solid #b8542a; outline-offset: 3px; border-radius: 12px; }
+  .pcard-inner {
+    position: relative; width: 100%; height: 100%;
+  }
+  .pcard-face {
+    position: absolute; inset: 0;
+    border: 1px solid #e7e5e2; border-radius: 11px;
+    padding: 22px 20px;
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: box-shadow 0.3s ease, opacity 0.4s ease, transform 0.4s ease;
+  }
+  .pcard-front { background: #fcfcfa; }
+  .pcard-back { background: #1a1a1a; border-color: #1a1a1a; opacity: 0; transform: translateY(10px); pointer-events: none; }
+  .pcard:hover .pcard-face { box-shadow: 0 22px 44px -28px rgba(0,0,0,0.32); }
+  @media (hover: hover) {
+    .pcard:hover .pcard-front { opacity: 0; transform: translateY(-6px); }
+    .pcard:hover .pcard-back  { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  }
+  .pcard.is-flipped .pcard-front { opacity: 0; transform: translateY(-6px); }
+  .pcard.is-flipped .pcard-back  { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+  .pcard-num { font-family: 'JetBrains Mono', ui-monospace; font-size: 11px; letter-spacing: 0.06em; color: #b8542a; }
+  .pcard-kick { font-family: 'JetBrains Mono', ui-monospace; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #bfbcb6; margin-top: 15px; }
+  .pcard-name { font-size: 18px; letter-spacing: -0.015em; color: #1a1a1a; line-height: 1.14; margin-top: 6px; }
+  .pcard-sum { font-size: 12.5px; line-height: 1.45; color: #6b6b6b; margin-top: 11px; }
+  .pcard-foot { margin-top: auto; }
+  .pcard-rule { height: 1px; background: #ece9e4; margin-bottom: 12px; }
+  .pcard-tags { display: flex; flex-wrap: nowrap; gap: 6px; }
+  .ptag { font-family: 'JetBrains Mono', ui-monospace; font-size: 8.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #7d7a75; background: #f2efea; border-radius: 999px; padding: 4px 9px; }
+
+  .pcard-thesis { font-family: 'Instrument Serif', serif; font-size: 17px; line-height: 1.24; color: #fafaf8; margin-top: 12px; }
+  .pcard-metrics { margin-top: 16px; padding-top: 15px; border-top: 1px solid #333; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 12px; }
+  .pm { display: flex; flex-direction: column; gap: 3px; }
+  .pm-n { font-family: 'Instrument Serif', serif; font-size: 23px; line-height: 0.9; color: #fafaf8; }
+  .pm-n .f { color: #b8542a; }
+  .pm-l { font-family: 'JetBrains Mono', ui-monospace; font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; color: #8f8b85; line-height: 1.3; }
+  .pcard-note { font-family: 'JetBrains Mono', ui-monospace; font-size: 8.5px; letter-spacing: 0.05em; text-transform: uppercase; color: #7d7a75; line-height: 1.5; margin-top: auto; padding-top: 14px; }
+  .pcard-note .k { color: #c9c5be; }
+
+  @media (max-width: 900px) { .pillar-cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .pillar-cards { grid-template-columns: 1fr; } .pcard { height: 340px; } }
+  .pillar-cards.cards-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 780px) { .pillar-cards.cards-3 { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .pcard-face { transition: opacity 0.2s ease; } }
+
+  /* ── Sidebar rail: fill the column, two modes ── */
+  .rail-sticky {
+    position: sticky; top: 48px;
+    min-height: calc(100vh - 96px);
+    display: flex; flex-direction: column;
+  }
+  .rail-meta { margin-top: auto; padding-top: 40px; }
+  .rail-meta-rule { height: 1px; background: #e7e5e2; margin-bottom: 20px; }
+  .rail-status { display: flex; align-items: center; gap: 9px; font-family: 'JetBrains Mono', ui-monospace; font-size: 11px; letter-spacing: 0.03em; color: #4a4a4a; }
+  .rail-status .dot { width: 7px; height: 7px; border-radius: 999px; background: #5b9e7a; box-shadow: 0 0 0 3px color-mix(in srgb, #5b9e7a 20%, transparent); flex: 0 0 auto; }
+  .rail-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+  .rail-contact a { font-size: 13px; color: #6b6b6b; transition: color 0.2s ease; width: max-content; }
+  .rail-contact a:hover { color: #1a1a1a; }
+  .rail-note { margin-top: 20px; font-family: 'JetBrains Mono', ui-monospace; font-size: 10px; line-height: 1.6; letter-spacing: 0.02em; color: #b8b4ae; }
+
+  /* Progress-rail variant: a filling hairline beside the contents */
+  .toc-fill { display: none; }
+  .rail-progress .toc { position: relative; padding-left: 18px; }
+  .rail-progress .toc::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 2px; border-radius: 2px; background: #e6e3de; }
+  .rail-progress .toc-fill { display: block; position: absolute; left: 3px; top: 6px; width: 2px; border-radius: 2px; background: #b8542a; height: 0; transition: height 0.15s linear; }
+  .rail-progress .toc-fill::after { content: ""; position: absolute; left: 50%; bottom: -3px; transform: translateX(-50%); width: 7px; height: 7px; border-radius: 999px; background: #b8542a; box-shadow: 0 0 0 3px color-mix(in srgb, #b8542a 20%, transparent); }
+
+  /* Unified transition: ventures band pulled into the rail column */
+  .ventures-in-main {
+    max-width: none !important;
+    margin-left: 0 !important; margin-right: 0 !important;
+    padding-left: 0 !important; padding-right: 0 !important;
+  }
+</style>
+</head>
+
+<body class="paper text-ink font-sans antialiased">
+
+
+<nav class="max-w-7xl mx-auto px-6 sm:px-10 pt-8 flex items-center justify-between">
+  <a href="index.html" class="flex items-center gap-2 text-sm tracking-tight">
+    <span class="font-medium">Phillip</span>
+    <span class="text-ink-faint">/</span>
+    <span class="text-ink-muted">Selected Work</span>
+  </a>
+  <div class="hidden sm:flex items-center gap-8 text-sm text-ink-muted">
+    <a href="index.html" class="hover:text-ink transition">← Back to home</a>
+    <a href="index.html#contact" class="hover:text-ink transition">Contact</a>
+  </div>
+</nav>
+
+<header class="max-w-7xl mx-auto px-6 sm:px-10 pt-20 sm:pt-28 pb-16 sm:pb-24 rise">
+  <h1 class="text-[40px] sm:text-[64px] leading-[1.04] tracking-tightest font-light max-w-4xl">
+    AI does the work.
+    <span class="font-serif italic text-accent block sm:inline">Humans do the thinking.</span>
+  </h1>
+  <p class="mt-10 max-w-2xl text-lg text-ink-soft leading-relaxed font-light">
+    Four case studies from the Intuit chapter — the expert platform
+    transformation, conversational AI for small business, distribution into
+    third-party assistants, and a planning tool I built end-to-end. Followed by
+    a VP product role at DiversyFund and three founder ventures.
+  </p>
+</header>
+
+<div class="max-w-7xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<div class="max-w-7xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
+  <div class="page-layout">
+
+    <aside class="page-aside hidden lg:block rail-progress" id="rail">
+      <div class="rail-sticky">
+        <div class="rail-top">
+          <p class="label mb-4">Contents</p>
+          <nav class="toc">
+            <span class="toc-fill" id="tocFill"></span>
+            <a href="#iep">         <span class="toc-num">01</span> Expert Platform</a>
+            <a href="#omni">        <span class="toc-num">02</span> Intuit Intelligence</a>
+            <a href="#third-party"> <span class="toc-num">03</span> ChatGPT + Claude</a>
+            <a href="#planner">     <span class="toc-num">04</span> Planner</a>
+            <div class="my-3 h-px bg-ink-line"></div>
+            <a href="#diversyfund"> <span class="toc-num">—</span> DiversyFund</a>
+            <a href="#ventures">     <span class="toc-num">—</span> Founder Ventures</a>
+          </nav>
+        </div>
+      </div>
+    </aside>
+
+    <main class="page-main space-y-0">
+
+      <!-- ─── 01 EXPERT PLATFORM ─── -->
+      <section id="iep" class="scroll-mt-12">
+        <p class="label text-accent mb-8">Intuit Portfolio · 2020 – Present</p>
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+          <p class="label">Case 01 · Platform Transformation</p>
+          <span class="pill">Core AI</span>
+          <span class="pill">Group PM, Expert Platform</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-4xl">
+          AI-Native <span class="font-serif italic">Expert Platform</span>.
+        </h2>
+        <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+          Intuit's expert organization ran on a tool-centric system: experts
+          stitched together a dozen surfaces to serve one customer. I led the
+          transformation to an AI-first workspace built around a single
+          assistant — and owned the platform layer underneath it that made that
+          assistant possible on more than one surface.
+        </p>
+
+        <p class="mt-8 max-w-2xl text-ink-muted leading-relaxed">
+          Scope: the full expert population across bookkeeping, tax, and payroll
+          — domain and product experts alike.
+        </p>
+
+        <div class="mt-12 border border-ink-line rounded-2xl p-8 sm:p-10 bg-white">
+          <p class="label text-accent mb-5">The bet</p>
+          <p class="text-2xl sm:text-3xl tracking-tight font-light leading-snug max-w-3xl">
+            Everyone else was adding AI to the tools experts already had.
+            <span class="font-serif italic">We argued for taking the tools away.</span>
+          </p>
+          <p class="mt-6 max-w-2xl text-ink-muted leading-relaxed">
+            A dozen surfaces, each a little smarter, still leaves an expert doing the
+            integration work in their head. Collapsing them into one assistant meant
+            accepting a harder build, a slower start, and a real chance of being wrong —
+            in exchange for the only version of this that compounds.
+          </p>
+        </div>
+
+        <!-- ── Consolidated pillars: self-contained flip cards ── -->
+        <div id="iep-pillars" class="subsection">
+          <span class="subsection-eyebrow">How I led it · four decisions</span>
+          <p class="bridge-lead">One assistant on the surface. <em>Four decisions</em> that made it possible.</p>
+
+          <div class="pillar-cards">
+
+            <article id="iep-framing" class="pcard scroll-mt-12" tabindex="0" aria-label="Assistant, not another tool">
+              <div class="pcard-inner">
+                <div class="pcard-face pcard-front">
+                  <span class="pcard-num">01.a</span>
+                  <span class="pcard-kick">Framing</span>
+                  <span class="pcard-name">Assistant, not another tool</span>
+                  <span class="pcard-sum">The organizing decision — one assistant surface, not a dozen point tools bolted onto the existing workspace.</span>
+                  <div class="pcard-foot">
+                    <div class="pcard-rule"></div>
+                    <div class="pcard-tags"><span class="ptag">Problem framing</span><span class="ptag">Scope</span></div>
+                  </div>
+                </div>
+                <div class="pcard-face pcard-back">
+                  <span class="pcard-num">01.a</span>
+                  <p class="pcard-thesis">Adding AI to every existing tool would have multiplied the surfaces experts already juggled. Consolidating to one assistant meant fewer, better entry points — and a platform bet instead of a feature bet.</p>
+                  <p class="pcard-note">What we chose <span class="k">not</span> to build mattered more than what we did</p>
+                </div>
+              </div>
+            </article>
+
+            <article id="iep-platform" class="pcard scroll-mt-12" tabindex="0" aria-label="Build once, serve anywhere">
+              <div class="pcard-inner">
+                <div class="pcard-face pcard-front">
+                  <span class="pcard-num">01.b</span>
+                  <span class="pcard-kick">Platform</span>
+                  <span class="pcard-name">Build once, serve anywhere</span>
+                  <span class="pcard-sum">Capabilities built as portable services rather than features welded to a single screen.</span>
+                  <div class="pcard-foot">
+                    <div class="pcard-rule"></div>
+                    <div class="pcard-tags"><span class="ptag">Reuse</span><span class="ptag">Portability</span></div>
+                  </div>
+                </div>
+                <div class="pcard-face pcard-back">
+                  <span class="pcard-num">01.b</span>
+                  <p class="pcard-thesis">The expensive mistake in assistant work is rebuilding the same capability per surface. I pushed for a shared layer so a capability written once could serve the expert workspace, adjacent internal surfaces, and third-party applications alike.</p>
+                  <p class="pcard-note">The same bet that made <span class="k">third-party distribution</span> possible</p>
+                </div>
+              </div>
+            </article>
+
+            <article id="iep-cowork" class="pcard scroll-mt-12" tabindex="0" aria-label="The expert supervises the AI">
+              <div class="pcard-inner">
+                <div class="pcard-face pcard-front">
+                  <span class="pcard-num">01.c</span>
+                  <span class="pcard-kick">Model</span>
+                  <span class="pcard-name">The expert supervises the AI</span>
+                  <span class="pcard-sum">Inverting the workflow — AI drafts, the expert reviews, corrects, and coaches.</span>
+                  <div class="pcard-foot">
+                    <div class="pcard-rule"></div>
+                    <div class="pcard-tags"><span class="ptag">AI drafts</span><span class="ptag">Coaching</span></div>
+                  </div>
+                </div>
+                <div class="pcard-face pcard-back">
+                  <span class="pcard-num">01.c</span>
+                  <p class="pcard-thesis">Copilot patterns keep the human typing. Inverting it makes the expert a reviewer and teacher, which is where their judgment is worth the most. We proved it on a narrow, high-frequency, easily-measured workflow before generalizing.</p>
+                  <p class="pcard-note">Narrow proving ground first, <span class="k">generalize second</span></p>
+                </div>
+              </div>
+            </article>
+
+            <article id="iep-eval" class="pcard scroll-mt-12" tabindex="0" aria-label="Nothing ships without a bar">
+              <div class="pcard-inner">
+                <div class="pcard-face pcard-front">
+                  <span class="pcard-num">01.d</span>
+                  <span class="pcard-kick">Quality</span>
+                  <span class="pcard-name">Nothing ships without a bar</span>
+                  <span class="pcard-sum">A two-layer evaluation practice — human review paired with automated judging — as a release gate, not a report.</span>
+                  <div class="pcard-foot">
+                    <div class="pcard-rule"></div>
+                    <div class="pcard-tags"><span class="ptag">Human eval</span><span class="ptag">Auto eval</span></div>
+                  </div>
+                </div>
+                <div class="pcard-face pcard-back">
+                  <span class="pcard-num">01.d</span>
+                  <p class="pcard-thesis">Assistant quality is unfalsifiable without a measurement system, so evaluation was funded as product work, not QA. Human ratings calibrated the automated judge; the judge made continuous measurement affordable.</p>
+                  <p class="pcard-note">Evaluation as <span class="k">product</span>, not QA</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 04 OMNI ─── -->
+      <section id="omni" class="scroll-mt-12">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+          <p class="label">Case 02 · Conversational AI for SMB</p>
+          <span class="pill">Core AI</span>
+          <span class="pill">Cross-functional partner / sponsor</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-4xl">
+          <span class="font-serif italic">Intuit Intelligence</span> for small business.
+        </h2>
+        <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+          The customer-facing counterpart to the expert work. I partnered
+          across the customer-facing AI organization to align its capability
+          catalog and quality standards with the expert platform's — so the same
+          capability behaved consistently whether a small-business owner asked
+          or an expert did.
+        </p>
+
+        <div class="mt-12 space-y-6 sm:space-y-8">
+          <figure class="frame">
+            <img src="omni-qbo.png?v=1786315222746" alt="Intuit Intelligence embedded inside QuickBooks Online — Business Feed, create actions, side panel chat" loading="lazy" />
+            <figcaption class="frame-caption">
+              <span>Intuit Intelligence · in QuickBooks Online</span>
+              <span>Ambient assistant · side panel</span>
+            </figcaption>
+          </figure>
+          <figure class="frame">
+            <img src="omni-standalone.png?v=1786315222746" alt="Intuit Intelligence standalone fullscreen — Ask anything entry with suggested prompts" loading="lazy" />
+            <figcaption class="frame-caption">
+              <span>Intuit Intelligence · Standalone</span>
+              <span>Full-attention surface</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+          <div>
+            <p class="label mb-3">The problem</p>
+            <p class="text-ink-soft leading-relaxed">
+              Two AI organizations were converging on the same capabilities from
+              different directions, with different definitions of "good."
+            </p>
+          </div>
+          <div>
+            <p class="label mb-3">The play</p>
+            <p class="text-ink-soft leading-relaxed">
+              Use the expert capability catalog as the shared reference for
+              governance and quality, rather than negotiating each capability
+              twice.
+            </p>
+          </div>
+          <div>
+            <p class="label mb-3">The outcome</p>
+            <p class="text-ink-soft leading-relaxed">
+              Cross-platform coherence — a broad set of capabilities shipped to
+              general availability, held to a quality bar both sides agreed to.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 05 ChatGPT + Claude ─── -->
+      <section id="third-party" class="scroll-mt-12">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+          <p class="label">Case 03 · Third-party AI distribution</p>
+          <span class="pill">Core AI</span>
+          <span class="pill">GPM, Strategic Sponsor</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-4xl">
+          Intuit inside <span class="font-serif italic">ChatGPT</span> &amp; <span class="font-serif italic">Claude</span>.
+        </h2>
+        <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+          The external payoff of the portable-capability bet.
+          Bringing TurboTax and QuickBooks into the AI assistants customers
+          already use — extending reach beyond owned surfaces and into the
+          ambient AI layer.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 frames-aligned">
+          <figure class="frame">
+            <img src="turbotax-chatgpt.png" alt="TurboTax expert match card rendered inside ChatGPT" loading="lazy" />
+            <figcaption class="frame-caption">
+              <span>TurboTax · ChatGPT</span>
+              <span>Expert match · skill</span>
+            </figcaption>
+          </figure>
+          <figure class="frame">
+            <img src="qbo-chatgpt.png" alt="QuickBooks profit and loss statement rendered inside ChatGPT" loading="lazy" />
+            <figcaption class="frame-caption">
+              <span>QuickBooks · ChatGPT</span>
+              <span>P&amp;L generation · skill</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="mt-12">
+          <p class="label mb-4">Claude connector · live demo</p>
+          <figure class="frame">
+            <img src="claude-demo.gif" alt="Animated demo of Intuit TurboTax connector running inside Claude — filing options, tax checklist, consent flow" loading="lazy" />
+            <figcaption class="frame-caption">
+              <span>TurboTax · Claude connector</span>
+              <span>Live connector</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+          <div>
+            <p class="label mb-3">The bet</p>
+            <p class="text-ink-soft leading-relaxed">
+              Customers will increasingly start jobs-to-be-done from a generic AI
+              chat surface. We need to be where they are — not just where we own
+              the URL.
+            </p>
+          </div>
+          <div>
+            <p class="label mb-3">The design</p>
+            <p class="text-ink-soft leading-relaxed">
+              Capabilities built headless and platform-agnostic, so the same one
+              could run on an owned surface or inside someone else's assistant.
+            </p>
+          </div>
+          <div>
+            <p class="label mb-3">The proof</p>
+            <p class="text-ink-soft leading-relaxed">
+              Working connectors for TurboTax and QuickBooks running inside
+              Claude and ChatGPT, held to the same evaluation standard as our
+              owned surfaces.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 07 PLANNER ─── -->
+      <section id="planner" class="scroll-mt-12">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+          <p class="label">Case 04 · Built &amp; shipped</p>
+          <span class="pill">Working code</span>
+          <span class="pill">Multi-agent</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-4xl">
+          The <span class="font-serif italic">Dependency Planner</span>.
+        </h2>
+        <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+          An AI-native planning tool I built end-to-end. Stakeholders submit
+          dependency requests, Claude triages them, scores them, surfaces
+          risks, and pushes to Jira on acceptance — turning a flooded intake
+          queue into a governed, ranked plan in seconds.
+        </p>
+
+        <figure class="frame mt-12">
+          <img src="vep-item-detail.png?v=1786319290671" alt="Dependency Planner item detail — title, description, business outcome, success metric, need-by date, effort sizing, schedule, and AI evaluation panel" loading="lazy" />
+          <figcaption class="frame-caption">
+            <span>Planner · Item detail</span>
+            <span>AI score · risks · open questions</span>
+          </figcaption>
+        </figure>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8 max-w-4xl">
+          <div class="feat">
+            <p class="feat-term">Intelligent triage</p>
+            <p class="feat-desc">Claude scores every request 0–100, assigns priority, routes to the right capability, and flags risks.</p>
+          </div>
+          <div class="feat">
+            <p class="feat-term">Document extraction</p>
+            <p class="feat-desc">Paste a PRD or deck and the form auto-populates.</p>
+          </div>
+          <div class="feat">
+            <p class="feat-term">On-demand re-evaluation</p>
+            <p class="feat-desc">Refresh rationale and risks as context shifts.</p>
+          </div>
+          <div class="feat">
+            <p class="feat-term">Planning Advisor chat</p>
+            <p class="feat-desc">Ask anything about the roadmap from any item page.</p>
+          </div>
+          <div class="feat">
+            <p class="feat-term">Push to Jira</p>
+            <p class="feat-desc">Accepted items create tickets with fields pre-populated.</p>
+          </div>
+          <div class="feat">
+            <p class="feat-term">Deck generation</p>
+            <p class="feat-desc">Executive-ready slides from live plan data.</p>
+          </div>
+        </div>
+
+        <p class="mt-10 max-w-3xl text-ink-muted leading-relaxed">
+          Currently in use for active roadmap planning. Built with Claude
+          Code for triage and chat, document connectors for Drive /
+          Figma / Slack, and a Jira integration on accept.
+        </p>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ═══════════════ PRIOR VENTURES BAND ═══════════════ -->
+<div class="max-w-7xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<section id="ventures" class="max-w-7xl mx-auto px-6 sm:px-10 scroll-mt-12">
+
+  <div class="max-w-3xl mb-20">
+    <p class="label mb-6">Before Intuit · Leadership &amp; founder track</p>
+    <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05]">
+      I don't just ship AI inside a big company.
+      <span class="font-serif italic text-accent">I've led product orgs and built companies.</span>
+    </h2>
+    <p class="mt-8 text-lg text-ink-soft leading-relaxed font-light">
+      Before Intuit: a VP of Product Development role driving platform growth at
+      a fintech, then the founder chapter — a digital holding company and its
+      product portfolio, a vertical SaaS platform, and a crypto sentiment
+      product. The same instinct that drives the AI work: find the friction,
+      build the system, ship it.
+    </p>
+  </div>
+
+  <!-- ── Role: DiversyFund (VP of Product Development) ── -->
+  <article id="diversyfund" class="mb-24 scroll-mt-12">
+    <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+      <p class="label">Role · 2019 – 2020</p>
+      <span class="pill">VP, Product Development</span>
+      <span class="pill">Fintech · PropTech</span>
+    </div>
+    <h3 class="text-2xl sm:text-4xl tracking-tightest font-light leading-[1.1] max-w-3xl">
+      DiversyFund — <span class="font-serif italic">democratizing</span> real estate investing.
+    </h3>
+    <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+      The role immediately before Intuit. As VP of Product Development, I led
+      digital and platform growth for a fintech company offering income investments
+      backed by institutional multifamily real estate — defined terms,
+      disciplined operations, and professional reporting for serious allocators.
+    </p>
+
+    <!-- DiversyFund homepage hero -->
+    <figure class="frame mt-12">
+      <img src="diversyfund-hero.png" alt="DiversyFund homepage — Income. Structure. Control. Income investments backed by institutional multifamily real estate, with stats: $300M+ real estate acquired, 20+ properties, 28,000+ investors, operating since 2016" loading="lazy" />
+      <figcaption class="frame-caption">
+        <span>DiversyFund · Homepage</span>
+        <span>Investor platform</span>
+      </figcaption>
+    </figure>
+
+    <div class="pillar-cards cards-3 mt-12">
+
+      <article class="pcard" tabindex="0" aria-label="The mandate">
+        <div class="pcard-inner">
+          <div class="pcard-face pcard-front">
+            <span class="pcard-num">01</span>
+            <span class="pcard-kick">The mandate</span>
+            <span class="pcard-name">Own growth, end-to-end</span>
+            <span class="pcard-sum">The investor-facing product, the acquisition funnel, and the systems that turn a visitor into a funded account.</span>
+            <div class="pcard-foot">
+              <div class="pcard-rule"></div>
+              <div class="pcard-tags"><span class="ptag">Product</span><span class="ptag">Growth</span></div>
+            </div>
+          </div>
+          <div class="pcard-face pcard-back">
+            <span class="pcard-num">01</span>
+            <p class="pcard-thesis">Turn a visitor into a funded account — the whole path, owned.</p>
+            <div class="pcard-metrics">
+              <div class="pm"><span class="pm-n">End-to-end</span><span class="pm-l">Digital &amp; platform</span></div>
+              <div class="pm"><span class="pm-n">Funnel</span><span class="pm-l">Visitor → funded</span></div>
+            </div>
+            <p class="pcard-note">Led as <span class="k">VP of Product Development</span></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard" tabindex="0" aria-label="The platform">
+        <div class="pcard-inner">
+          <div class="pcard-face pcard-front">
+            <span class="pcard-num">02</span>
+            <span class="pcard-kick">The platform</span>
+            <span class="pcard-name">Vertically integrated</span>
+            <span class="pcard-sum">Unlike brokers that match investors to third-party deals, DiversyFund sources, owns, and manages the assets — so the product had to convey trust as much as returns.</span>
+            <div class="pcard-foot">
+              <div class="pcard-rule"></div>
+              <div class="pcard-tags"><span class="ptag">Fintech</span><span class="ptag">Real estate</span></div>
+            </div>
+          </div>
+          <div class="pcard-face pcard-back">
+            <span class="pcard-num">02</span>
+            <p class="pcard-thesis">Own the assets, not just the marketplace — trust as much as returns.</p>
+            <div class="pcard-metrics">
+              <div class="pm"><span class="pm-n">$300M<span class="f">+</span></span><span class="pm-l">Real estate acquired</span></div>
+              <div class="pm"><span class="pm-n">20<span class="f">+</span></span><span class="pm-l">Properties</span></div>
+            </div>
+            <p class="pcard-note">Institutional <span class="k">multifamily real estate</span></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="pcard" tabindex="0" aria-label="The impact">
+        <div class="pcard-inner">
+          <div class="pcard-face pcard-front">
+            <span class="pcard-num">03</span>
+            <span class="pcard-kick">The impact</span>
+            <span class="pcard-name">Meaningful growth</span>
+            <span class="pcard-sum">Led the product org through a period of meaningful investor and platform growth.</span>
+            <div class="pcard-foot">
+              <div class="pcard-rule"></div>
+              <div class="pcard-tags"><span class="ptag">Investor growth</span><span class="ptag">Platform</span></div>
+            </div>
+          </div>
+          <div class="pcard-face pcard-back">
+            <span class="pcard-num">03</span>
+            <p class="pcard-thesis">Scaled the investor base while deepening the asset portfolio.</p>
+            <div class="pcard-metrics">
+              <div class="pm"><span class="pm-n">28,000<span class="f">+</span></span><span class="pm-l">Investors</span></div>
+              <div class="pm"><span class="pm-n">2016</span><span class="pm-l">Operating since</span></div>
+            </div>
+            <p class="pcard-note"><span class="k">$300M+</span> acquired to date</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </article>
+
+  <!-- ── Venture 1: Omni Holding ── -->
+  <article class="mb-24 pt-16 border-t border-ink-line">
+    <p class="label mb-8">Founder ventures</p>
+    <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+      <p class="label">Venture 01 · 2013 – 2019</p>
+      <span class="pill">Founder</span>
+      <span class="pill">Digital holding co.</span>
+    </div>
+    <h3 class="text-2xl sm:text-4xl tracking-tightest font-light leading-[1.1] max-w-3xl">
+      Omni Holding Company.
+    </h3>
+    <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+      A digital holding company operating a portfolio of online consumer
+      brands across e-commerce, SEO, and web development — building, marketing,
+      and scaling products end-to-end.
+    </p>
+
+    <!-- Focus areas — full-width landscape, three sections -->
+    <div class="omni-focus">
+      <div class="omni-focus-cell">
+        <span class="omni-focus-num">01</span>
+        <p class="omni-focus-label">E-commerce</p>
+        <p class="omni-focus-desc">Built and scaled DTC brands on a shared platform — storefronts, fulfillment, and paid-acquisition engines.</p>
+      </div>
+      <div class="omni-focus-cell">
+        <span class="omni-focus-num">02</span>
+        <p class="omni-focus-label">SEO</p>
+        <p class="omni-focus-desc">Organic growth as a core channel — content systems and search positioning across the portfolio.</p>
+      </div>
+      <div class="omni-focus-cell">
+        <span class="omni-focus-num">03</span>
+        <p class="omni-focus-label">Web development</p>
+        <p class="omni-focus-desc">In-house build team standing up new brands and properties on a repeatable stack.</p>
+      </div>
+    </div>
+
+    <!-- Two-column: site (left) · brand roster (right) -->
+    <div class="mt-12 omni-split">
+
+      <!-- LEFT: screenshot -->
+      <div class="omni-left">
+        <figure class="frame">
+          <img src="omni-holding-site.png" alt="Omni Holding Company homepage — hero, focus areas, brands grid, about, and careers" loading="lazy" />
+          <figcaption class="frame-caption">
+            <span>Omni Holding · Homepage</span>
+            <span>Corporate site</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- RIGHT: brand roster fills the space beside the screenshot -->
+      <div class="omni-right">
+        <div class="flex items-baseline justify-between mb-6">
+          <p class="label">The portfolio</p>
+          <p class="label">09 brands</p>
+        </div>
+        <div class="border-t border-ink omni-roster">
+          <a class="brand-row group" style="--brand:#2f6fb0">
+            <span class="brand-idx">01</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Cogniflex <span class="brand-acq">Acquired</span></span>
+            <span class="brand-cat">Nootropic supplement</span>
+            <span class="brand-tag">E-commerce</span>
+          </a>
+          <a class="brand-row group" style="--brand:#5b9e7a">
+            <span class="brand-idx">02</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">US Car Reports <span class="brand-acq">Acquired</span></span>
+            <span class="brand-cat">Automotive lead-gen</span>
+            <span class="brand-tag">Content</span>
+          </a>
+          <a class="brand-row group" style="--brand:#c89a7a">
+            <span class="brand-idx">03</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Mineral Mask</span>
+            <span class="brand-cat">Skincare</span>
+            <span class="brand-tag">DTC</span>
+          </a>
+          <a class="brand-row group" style="--brand:#e4a517">
+            <span class="brand-idx">04</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Bright Guard</span>
+            <span class="brand-cat">Consumer health</span>
+            <span class="brand-tag">DTC</span>
+          </a>
+          <a class="brand-row group" style="--brand:#3c4848">
+            <span class="brand-idx">05</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Vortech <span class="brand-acq">Acquired</span></span>
+            <span class="brand-cat">Consumer electronics</span>
+            <span class="brand-tag">E-commerce</span>
+          </a>
+          <a class="brand-row group" style="--brand:#4e2e35">
+            <span class="brand-idx">06</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Cinsay</span>
+            <span class="brand-cat">Video commerce</span>
+            <span class="brand-tag">Platform</span>
+          </a>
+          <a class="brand-row group" style="--brand:#8a6b4f">
+            <span class="brand-idx">07</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Zymax</span>
+            <span class="brand-cat">Performance supplement</span>
+            <span class="brand-tag">DTC</span>
+          </a>
+          <a class="brand-row group" style="--brand:#b69e71">
+            <span class="brand-idx">08</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Viral.US</span>
+            <span class="brand-cat">Content &amp; distribution</span>
+            <span class="brand-tag">Media</span>
+          </a>
+          <a class="brand-row group" style="--brand:#7d8f6f">
+            <span class="brand-idx">09</span>
+            <span class="brand-mark"></span>
+            <span class="brand-name">Daily Chill</span>
+            <span class="brand-cat">Wellness</span>
+            <span class="brand-tag">DTC</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ── Venture 2: Fitify ── -->
+  <article class="mb-24 pt-16 border-t border-ink-line">
+    <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+      <p class="label">Venture 02 · 2018 – 2019</p>
+      <span class="pill">Co-founder</span>
+      <span class="pill">Vertical SaaS</span>
+    </div>
+    <h3 class="text-2xl sm:text-4xl tracking-tightest font-light leading-[1.1] max-w-3xl">
+      Fitify — a CRM for <span class="font-serif italic">fitness studios</span>.
+    </h3>
+    <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+      An all-in-one studio management platform — scheduling, check-in, point of
+      sale, payroll, and reporting — built as a direct competitor to Mindbody.
+      The full operating system for a boutique fitness business.
+    </p>
+
+    <!-- Front desk hero — the most distinctive screen -->
+    <figure class="frame mt-12">
+      <img src="fitify-frontdesk.png" alt="Fitify front-desk check-in — visual bike-grid seating layout for a spin class, with booked, checked-in, and on-hold counts, wait list, and class notes" loading="lazy" />
+      <figcaption class="frame-caption">
+        <span>Fitify · Front Desk check-in</span>
+        <span>Live class seating grid</span>
+      </figcaption>
+    </figure>
+
+    <!-- Three supporting screens -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <figure class="frame">
+        <img src="fitify-dashboard.png" alt="Fitify dashboard — next class, today's revenue, daily schedule, new customers" loading="lazy" />
+        <figcaption class="frame-caption">
+          <span>Dashboard</span>
+          <span>Daily ops</span>
+        </figcaption>
+      </figure>
+      <figure class="frame">
+        <img src="fitify-scheduler.png" alt="Fitify scheduler — weekly calendar of classes by instructor and room" loading="lazy" />
+        <figcaption class="frame-caption">
+          <span>Scheduler</span>
+          <span>Class calendar</span>
+        </figcaption>
+      </figure>
+      <figure class="frame">
+        <img src="fitify-pos.png" alt="Fitify point of sale — customer profile, inventory, series, and contracts with cart" loading="lazy" />
+        <figcaption class="frame-caption">
+          <span>Point of Sale</span>
+          <span>Retail &amp; series</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+      <div>
+        <p class="label mb-3">The wedge</p>
+        <p class="text-ink-soft leading-relaxed">
+          Mindbody owned the market but studios complained about clunky tooling.
+          Fitify rebuilt the daily front-desk workflow around speed.
+        </p>
+      </div>
+      <div>
+        <p class="label mb-3">The product</p>
+        <p class="text-ink-soft leading-relaxed">
+          Scheduler, visual class layouts, check-in, POS with inventory and
+          class series, time clock, and reporting — one platform, end-to-end.
+        </p>
+      </div>
+      <div>
+        <p class="label mb-3">The lesson</p>
+        <p class="text-ink-soft leading-relaxed">
+          Vertical SaaS lives or dies on the boring operational surface. The
+          bike-grid check-in was the feature that won demos.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ── Venture 3: HodlFeed ── -->
+  <article class="pt-16 border-t border-ink-line">
+    <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-6">
+      <p class="label">Venture 03 · 2018</p>
+      <span class="pill">Founder</span>
+      <span class="pill">Fintech</span>
+    </div>
+    <h3 class="text-2xl sm:text-4xl tracking-tightest font-light leading-[1.1] max-w-3xl">
+      HodlFeed — <span class="font-serif italic">crypto sentiment</span>, streamed.
+    </h3>
+    <p class="mt-6 max-w-3xl text-lg text-ink-soft leading-relaxed">
+      A sentiment-analysis platform for crypto traders — a streaming news feed
+      that surfaced the signal that actually moved markets, designed to make a
+      trading strategy effortless.
+    </p>
+
+    <figure class="frame mt-12">
+      <img src="hodlfeed-hero.jpeg" alt="HodlFeed homepage hero — Discover Crypto News that Actually Matters, with Launch News Feed and Register calls to action" loading="lazy" />
+      <figcaption class="frame-caption">
+        <span>HodlFeed · Homepage</span>
+        <span>Streaming sentiment feed</span>
+      </figcaption>
+    </figure>
+
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+      <div>
+        <p class="label mb-3">The problem</p>
+        <p class="text-ink-soft leading-relaxed">
+          Crypto traders drowned in noise — thousands of sources, most of it
+          irrelevant to any given position.
+        </p>
+      </div>
+      <div>
+        <p class="label mb-3">The approach</p>
+        <p class="text-ink-soft leading-relaxed">
+          Sentiment analysis over a real-time news stream, filtered and ranked
+          so the feed surfaced what was likely to move price.
+        </p>
+      </div>
+      <div>
+        <p class="label mb-3">The throughline</p>
+        <p class="text-ink-soft leading-relaxed">
+          An early bet on the same idea that runs through all the AI work:
+          machine intelligence triaging the firehose so a human can act.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══════════════ END PRIOR VENTURES ═══════════════ -->
+
+<div class="max-w-7xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+
+<section class="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-24 pb-16 sm:pb-24">
+  <div class="grid grid-cols-12 gap-y-10 sm:gap-x-12">
+    <div class="col-span-12 sm:col-span-8">
+      <p class="label mb-6">Through-line</p>
+      <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-3xl">
+        One strategic bet, end-to-end.
+        <span class="font-serif italic text-accent">Built, shipped, and measured at scale.</span>
+      </h2>
+      <p class="mt-8 max-w-2xl text-ink-soft leading-relaxed">
+        If your team needs the seam between probabilistic intelligence and the
+        humans who own the outcome — let's talk.
+      </p>
+    </div>
+    <div class="col-span-12 sm:col-span-4 sm:pt-2">
+      <p class="label mb-4">Reach out</p>
+      <ul class="space-y-3 text-lg">
+        <li><a href="mailto:philnb331@gmail.com" class="link">philnb331@gmail.com</a></li>
+        <li><a href="https://github.com/pb3oh" class="link">github.com/pb3oh</a></li>
+        <li><a href="https://www.linkedin.com/in/phil-b-b0586147" class="link">linkedin.com/in/phil-b-b0586147</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-7xl mx-auto px-6 sm:px-10 pb-10">
+  <div class="rule mb-6"></div>
+  <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-ink-faint">
+    <p>© 2026 Phillip. Details generalized where under NDA.</p>
+    <p class="font-mono">portfolio · 2026</p>
+  </div>
+</footer>
+
+<script>
+  /* ── Pillar flip cards: hover flips (CSS); click/tap or Enter toggles a lock ── */
+  document.querySelectorAll('.pcard').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('is-flipped'));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('is-flipped'); }
+    });
+  });
+
+  /* ── Scroll-spy for the sidebar TOC ── */
+  const links = document.querySelectorAll('.toc a');
+  const map = {};
+  links.forEach(a => map[a.getAttribute('href').slice(1)] = a);
+  // Observe only visible, top-level anchors (+ the pillar block as one unit)
+  const spyTargets = document.querySelectorAll('main > section[id], #iep-pillars, #ventures, #diversyfund');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        if (map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  spyTargets.forEach(s => io.observe(s));
+
+  /* ── Progress rail: fill tracks scroll through the whole contents ── */
+  const tocFill = document.getElementById('tocFill');
+  const tocNav = document.querySelector('.toc');
+
+  /* Unified layout: the ventures band lives inside the rail column */
+  const ventures = document.getElementById('ventures');
+  const venturesSep = ventures.previousElementSibling; // hairline rule before the band
+  document.querySelector('.page-main').appendChild(ventures);
+  ventures.classList.add('ventures-in-main');
+  if (venturesSep) venturesSep.style.display = 'none';
+
+  function updateFill() {
+    const start = document.getElementById('iep').offsetTop;
+    const endEl = document.getElementById('ventures');
+    const end = endEl.offsetTop + endEl.offsetHeight;
+    const y = window.scrollY + window.innerHeight * 0.5;
+    let p = (y - start) / (end - start);
+    p = Math.max(0, Math.min(1, p));
+    tocFill.style.height = (p * (tocNav.offsetHeight - 12)) + 'px';
+  }
+  window.addEventListener('scroll', updateFill, { passive: true });
+  window.addEventListener('resize', updateFill);
+  updateFill();
+
+  /* ── Hash / TOC navigation: land precisely on the target ──
+     Same-page anchor clicks and cross-page hash loads can both land off-target:
+     lazy images below the fold reflow the page mid-scroll, and the ventures block
+     is reparented on load. We snap directly (no smooth mid-flight) and re-correct
+     several times as layout settles + whenever an image finishes decoding. ── */
+  function snapTo(el) {
+    if (!el) return;
+    const rootStyle = document.documentElement.style;
+    const prev = rootStyle.scrollBehavior;
+    rootStyle.scrollBehavior = 'auto';
+    el.scrollIntoView({ block: 'start' });
+    rootStyle.scrollBehavior = prev;
+  }
+  function elFromHash(h) {
+    if (!h) return null;
+    try { return document.getElementById(decodeURIComponent(h.slice(1))); } catch (e) { return null; }
+  }
+  // sustained correction over the window where reflow happens
+  let correctTimers = [];
+  function clearCorrections() { correctTimers.forEach(clearTimeout); correctTimers = []; }
+  ['wheel', 'touchstart', 'keydown'].forEach(ev =>
+    window.addEventListener(ev, clearCorrections, { passive: true }));
+  function correctTo(el, smoothFirst) {
+    if (!el) return;
+    clearCorrections();
+    if (smoothFirst) {
+      const y = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    } else {
+      snapTo(el);
+    }
+    correctTimers = [90, 240, 450, 750, 1150].map(t => setTimeout(() => snapTo(el), t));
+  }
+
+  // Intercept in-page anchor clicks (TOC + any href="#…")
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = elFromHash(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      history.pushState(null, '', a.getAttribute('href'));
+      correctTo(target, true);   // animate to it, then lock on precisely
+    });
+  });
+
+  // Cross-page load with a hash (e.g. from index.html)
+  if (location.hash) {
+    const target = elFromHash(location.hash);
+    [0, 80, 200, 400, 700, 1100].forEach(t => setTimeout(() => snapTo(target), t));
+    requestAnimationFrame(() => snapTo(target));
+    window.addEventListener('load', () => { snapTo(target); setTimeout(() => snapTo(target), 120); });
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.complete) img.addEventListener('load', () => snapTo(target), { once: true });
+    });
+  }
+</script>
+
+</body>
+</html>
