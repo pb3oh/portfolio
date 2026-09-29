@@ -4,375 +4,457 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Phillip — Product Leadership</title>
-<meta name="description" content="Product leader building and scaling AI platforms and the teams behind them." />
+<meta name="description" content="Product leader building AI-native platforms and the teams behind them. Group PM for Intuit's AI-native expert platform; previously VP of Product and three-time founder." />
+<meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)" />
+<script>document.documentElement.classList.add('js')</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Geist', 'ui-sans-serif', 'system-ui'],
-          serif: ['"Instrument Serif"', 'ui-serif', 'Georgia'],
-          mono: ['"JetBrains Mono"', 'ui-monospace'],
-        },
-        colors: {
-          ink: {
-            DEFAULT: '#1a1a1a',
-            soft:    '#2a2a2a',
-            muted:   '#6b6b6b',
-            faint:   '#9a9a9a',
-            line:    '#e7e5e2',
-            paper:   '#fafaf8',
-          },
-          accent: '#b8542a',
-        },
-        letterSpacing: { tightest: '-0.04em' },
-      },
-    },
-  }
-</script>
-
-<style>
-  html { scroll-behavior: smooth; }
-  body {
-    font-feature-settings: "ss01", "ss02", "cv11";
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  .rule { height: 1px; background: #e7e5e2; }
-
-  .dot {
-    width: 6px; height: 6px; border-radius: 9999px;
-    background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.18);
-    display:inline-block;
-  }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-  .d-1 { animation-delay: 0.05s; }
-  .d-2 { animation-delay: 0.15s; }
-  .d-3 { animation-delay: 0.25s; }
-  .d-4 { animation-delay: 0.35s; }
-  .d-5 { animation-delay: 0.45s; }
-
-  .case { transition: border-color 0.4s ease; }
-  .case:hover { border-color: #1a1a1a; }
-  .case:hover .case-arrow { transform: translateX(4px); }
-  .case-arrow { transition: transform 0.3s ease; display: inline-block; }
-
-  .link {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    transition: background-size 0.3s ease;
-  }
-  .link:hover { background-size: 100% 2px; }
-
-  .label {
-    font-family: 'JetBrains Mono', ui-monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #9a9a9a;
-  }
-
-  .paper {
-    background-color: #fafaf8;
-    background-image: radial-gradient(rgba(0,0,0,0.018) 1px, transparent 1px);
-    background-size: 3px 3px;
-  }
-
-  .cta {
-    position: relative; overflow: hidden;
-    background: #1a1a1a; color: #fafaf8; border-color: #1a1a1a;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    animation: cta-halo 2.8s ease-in-out infinite;
-  }
-  .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 26px -12px rgba(26,26,26,0.5); animation-play-state: paused; }
-  .cta:hover .cta-arrow { transform: translate(2px, -2px); }
-  .cta-arrow { transition: transform 0.25s ease; display: inline-block; animation: cta-nudge 2.8s ease-in-out infinite; }
-  /* shimmer sweep */
-  .cta::after {
-    content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
-    transform: skewX(-18deg); animation: cta-shimmer 2.8s ease-in-out infinite;
-  }
-  @keyframes cta-halo {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(184,84,42,0.45); }
-    55%      { box-shadow: 0 0 0 7px rgba(184,84,42,0); }
-  }
-  @keyframes cta-nudge {
-    0%, 82%, 100% { transform: translate(0, 0); }
-    88%           { transform: translate(3px, -3px); }
-    94%           { transform: translate(1px, -1px); }
-  }
-  @keyframes cta-shimmer {
-    0%, 32% { left: -60%; }
-    62%, 100% { left: 130%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cta, .cta-arrow, .cta::after { animation: none; }
-  }
-
-  /* Sticky top bar */
-  .site-nav {
-    background: rgba(250, 250, 248, 0.72);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  }
-  .site-nav.scrolled {
-    border-bottom-color: #e7e5e2;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 10px 30px -24px rgba(0,0,0,0.35);
-    background: rgba(250, 250, 248, 0.88);
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="paper text-ink font-sans antialiased">
+<body>
 
-<div class="sticky top-0 z-50 site-nav">
-  <nav class="max-w-6xl mx-auto px-6 sm:px-10 py-4 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2 text-sm tracking-tight">
-      <span class="font-medium">Phillip</span>
-      <span class="text-ink-faint">/</span>
-      <span class="text-ink-muted">Product Leadership</span>
-    </a>
-    <div class="hidden sm:flex items-center gap-8 text-sm text-ink-muted">
-      <a href="#principles"          class="hover:text-ink transition">Principles</a>
-      <a href="./portfolio.html"     class="hover:text-ink transition">Selected Work</a>
-      <a href="#contact"             class="hover:text-ink transition">Contact</a>
-    </div>
-  </nav>
-</div>
-
-<header class="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
-
-  <h1 class="rise d-2 text-[44px] sm:text-[76px] leading-[1.02] tracking-tightest font-light max-w-4xl">
-    Building the connective tissue between
-    <span class="font-serif italic text-accent" style="color: #B8542A">human intelligence</span>
-    and
-    <span class="font-serif italic">artificial intelligence</span>.
-  </h1>
-
-  <p class="rise d-3 mt-10 max-w-2xl text-lg sm:text-xl text-ink-soft leading-relaxed font-light">
-    I design and ship multi-agent platforms that augment expert work — at the scale,
-    latency, and governance bar enterprises actually require. Most recently leading
-    the AI-native expert platform at Intuit.
-  </p>
-
-  <div class="rise d-4 mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
-    <a href="./portfolio.html" class="cta inline-flex items-center gap-3 px-5 py-3 border border-ink rounded-full font-medium" style="color: #fafaf8;">
-      <span class="relative z-10">View selected work</span>
-      <span class="cta-arrow text-base leading-none relative z-10">↗</span>
-    </a>
-    <a href="https://github.com/pb3oh" class="link text-ink-muted hover:text-ink transition inline-flex items-center gap-2">
-      GitHub
-    </a>
-    <a href="#contact" class="link text-ink-muted hover:text-ink transition">Get in touch</a>
+<header class="nav" id="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand"><b>Phillip</b><span>/ Product Leadership</span></a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#iep">Intuit</a>
+      <a href="#before">Before Intuit</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-
 </header>
 
-<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+<main id="top">
 
-<section id="principles" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-
-  <div class="grid grid-cols-12 gap-y-12 sm:gap-x-12">
-
-    <div class="col-span-12 sm:col-span-4">
-      <p class="label mb-4">§ 01</p>
-      <h2 class="text-3xl sm:text-4xl tracking-tight font-light leading-[1.1]">
-        My AI-Native<br/>Principles
-      </h2>
-      <p class="mt-6 text-ink-muted text-sm leading-relaxed max-w-xs">
-        A working philosophy formed shipping production AI to millions of customers
-        and tens of thousands of financial experts.
-      </p>
+  <!-- ─── Hero ─── -->
+  <section class="wrap hero">
+    <p class="label rise">Group PM · AI-native platforms</p>
+    <h1 class="rise d1" style="margin-top:20px">
+      AI does the work.
+      <em class="accent">Humans do the thinking.</em>
+    </h1>
+    <p class="hero-lede rise d2">
+      I lead product for AI-native platforms that augment expert work — most recently
+      the AI-native Intuit Expert Platform, where tax and bookkeeping experts supervise
+      AI instead of doing everything by hand. Before that: VP of Product at a fintech,
+      and three companies of my own.
+    </p>
+    <div class="hero-meta rise d3">
+      <a href="#iep" class="btn">See the work <span class="arr">↓</span></a>
+      <a href="https://github.com/pb3oh" class="link">GitHub</a>
+      <a href="https://www.linkedin.com/in/phil-b-b0586147" class="link">LinkedIn</a>
+      <a href="mailto:philnb331@gmail.com" class="link">Email</a>
     </div>
 
-    <div class="col-span-12 sm:col-span-8 space-y-12">
+    <div class="facts rise d3">
+      <div class="fact"><p class="fact-n">8 PMs</p><p class="fact-l">across 10 scrum teams, distributed</p></div>
+      <div class="fact"><p class="fact-n">Patent <em>pending</em></p><p class="fact-l">recommendation work from the platform</p></div>
+      <div class="fact"><p class="fact-n">$300M<span class="accent">+</span></p><p class="fact-l">real estate acquired while VP of Product at DiversyFund</p></div>
+      <div class="fact"><p class="fact-n">3 exits</p><p class="fact-l">brands acquired out of a nine-brand holding company</p></div>
+    </div>
+  </section>
 
-      <article class="grid grid-cols-12 gap-6 items-start">
-        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">01</span></div>
-        <div class="col-span-10 sm:col-span-11">
-          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
-            Agentic workflows over monolithic prompts.
-          </h3>
-          <p class="mt-3 text-ink-muted leading-relaxed">
-            Real work decomposes into roles, tools, and handoffs. I design systems
-            where specialized agents plan, retrieve, act, and verify — with
-            deterministic checkpoints between the probabilistic steps.
+  <!-- ─── Intuit: AI-native IEP ─── -->
+  <section id="iep" class="section">
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+        <div class="row">
+          <p class="label accent">Intuit · 2020 – present</p>
+          <span class="pill">Group PM, DIY &amp; Expert Experiences</span>
+        </div>
+        <h2>The AI-native <em>Intuit Expert Platform</em>.</h2>
+      </div>
+
+      <div class="split">
+        <div class="reveal">
+          <p class="prose">
+            Someone doing their own taxes or books would hit a wall and have to leave
+            the product to get help: a different interface, a different context, a
+            different wait. I led the work that removed that boundary, so help and AI
+            arrive inside the flow the customer is already in.
           </p>
+          <p class="prose">
+            The mechanism was an AI-first expert platform and the shared capability
+            layer underneath it. The outcome was measured on the customer side:
+            fewer abandoned sessions, and fewer handoffs that felt like starting over.
+            We started with tax and bookkeeping, the highest-stakes and most
+            abandonment-prone journeys, then extended to payroll. All of it shipped in
+            a regulated domain, where every change clears compliance, security, and
+            legal review.
+          </p>
+          <p class="note">Recommendation work from this platform is patent pending. Details generalized where under NDA.</p>
+        </div>
+
+        <aside class="bet reveal">
+          <p class="label accent">The bet</p>
+          <p class="bet-quote">
+            Everyone else was adding AI to the tools experts already had.
+            <em>We argued for taking the tools away.</em>
+          </p>
+          <p>
+            A dozen surfaces, each a little smarter, still leave an expert doing the
+            integration work in their head. Collapsing them into one assistant meant a
+            harder build, a slower start, and a real chance of being wrong, in exchange
+            for the only version of this that compounds.
+          </p>
+        </aside>
+      </div>
+
+      <!-- Four decisions -->
+      <div class="sub reveal" id="decisions">
+        <p class="label">How I led it</p>
+        <h3 class="sub-title">One assistant on the surface. <em>Four decisions</em> underneath it.</h3>
+
+        <div class="decisions">
+          <article class="decision">
+            <span class="num">01 · Framing</span>
+            <h4>An assistant, not another tool</h4>
+            <p>Adding AI to every existing tool would have multiplied the surfaces experts already juggled. One assistant meant fewer, better entry points: a platform bet instead of a feature bet.</p>
+            <p class="kicker">What we didn't build mattered most</p>
+          </article>
+          <article class="decision">
+            <span class="num">02 · Platform</span>
+            <h4>Build once, serve anywhere</h4>
+            <p>Capabilities built as portable services, not features welded to one screen, so the same capability serves the expert workspace, adjacent surfaces, and third-party assistants.</p>
+            <p class="kicker">No rebuilding per surface</p>
+          </article>
+          <article class="decision">
+            <span class="num">03 · Model</span>
+            <h4>The expert supervises the AI</h4>
+            <p>We inverted the copilot pattern: the AI drafts, and the expert reviews, corrects, and coaches, which is where their judgment is worth the most. We proved it on one narrow, high-frequency workflow first.</p>
+            <p class="kicker">Narrow proving ground, then generalize</p>
+          </article>
+          <article class="decision">
+            <span class="num">04 · Quality</span>
+            <h4>Nothing ships without a bar</h4>
+            <p>A two-layer evaluation practice as the release gate: human ratings calibrate an automated judge, and the judge makes continuous measurement affordable.</p>
+            <p class="kicker">Evaluation funded as product, not QA</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Principles -->
+      <div class="sub split">
+        <div class="reveal">
+          <p class="label">What carries over</p>
+          <h3 class="sub-title">Principles I build <em>AI-native</em> products by.</h3>
+        </div>
+        <div class="principles reveal">
+          <div class="principle">
+            <span class="label">01</span>
+            <div><h4>Agentic workflows over monolithic prompts.</h4>
+            <p>Real work breaks down into roles, tools, and handoffs. Specialized agents plan, retrieve, act, and verify, with deterministic checkpoints between the probabilistic steps.</p></div>
+          </div>
+          <div class="principle">
+            <span class="label">02</span>
+            <div><h4>Governance by design, not an audit afterthought.</h4>
+            <p>Evals, policy gates, and lineage live next to the agent graph. If it can't be measured and attested, it doesn't ship to regulated customers.</p></div>
+          </div>
+          <div class="principle">
+            <span class="label">03</span>
+            <div><h4>The expert stays in the loop.</h4>
+            <p>The most valuable AI doesn't replace the professional; it compounds them. Confidence over autonomy, traceability over magic.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prototype: Dependency Planner -->
+      <div class="proto reveal" id="planner">
+        <figure class="frame">
+          <img src="vep-item-detail.png" alt="Dependency Planner item detail: title, business outcome, success metric, need-by date, effort sizing, and an AI evaluation panel with score, risks, and open questions" loading="lazy" />
+          <figcaption><span>Planner · item detail</span><span>AI score · risks · open questions</span></figcaption>
+        </figure>
+        <div>
+          <span class="pill accent">Prototype · built with Claude Code</span>
+          <h3>The <em>Dependency Planner</em>.</h3>
+          <p>
+            A side project that applies AI to how my own teams plan. Stakeholders submit
+            dependency requests, and Claude triages them: it scores each one, surfaces
+            risks and open questions, and pushes accepted items to Jira. A flooded
+            intake queue becomes a ranked plan, and PMs spend their time on judgment
+            calls instead of sorting the queue.
+          </p>
+          <ul class="checks">
+            <li>0–100 triage scoring</li>
+            <li>PRD → form extraction</li>
+            <li>Planning-advisor chat</li>
+            <li>Push to Jira on accept</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Before Intuit ─── -->
+  <section id="before" class="section">
+    <div class="wrap">
+
+      <div class="sec-head reveal">
+        <p class="label accent">Before Intuit · 2013 – 2020</p>
+        <h2>I've led a product org <em>and built companies</em>.</h2>
+        <p>
+          A VP of Product role driving platform growth at a fintech, and before that
+          the founder chapter: a digital holding company, a vertical SaaS platform, and
+          a crypto sentiment product. The instinct behind the AI work is the same:
+          find the friction, build the system, ship it.
+        </p>
+      </div>
+
+      <!-- DiversyFund -->
+      <article class="chapter reveal" id="diversyfund">
+        <div class="chapter-meta">
+          <span class="years">2019 – 2020</span>
+          <span class="pill">VP of Product</span>
+          <span class="pill">Fintech · PropTech</span>
+        </div>
+        <div>
+          <h3>DiversyFund: <em>democratizing</em> real estate investing.</h3>
+          <p class="prose">
+            As VP of Product I owned digital and platform growth for a fintech offering
+            income investments backed by institutional multifamily real estate. That
+            meant the investor-facing product, the acquisition funnel, and the systems
+            that turn a visitor into a funded account. DiversyFund sources, owns, and
+            manages its assets, so the product had to convey trust as much as returns.
+          </p>
+          <div class="stats">
+            <div><p class="stat-n">$300M<span class="plus">+</span></p><p class="stat-l">Real estate acquired</p></div>
+            <div><p class="stat-n">28,000<span class="plus">+</span></p><p class="stat-l">Investors</p></div>
+            <div><p class="stat-n">20<span class="plus">+</span></p><p class="stat-l">Properties</p></div>
+          </div>
+          <figure class="frame media">
+            <img src="diversyfund-hero.png" alt="DiversyFund homepage: Income. Structure. Control. Income investments backed by institutional multifamily real estate" loading="lazy" />
+            <figcaption><span>DiversyFund · homepage</span><span>Investor platform</span></figcaption>
+          </figure>
         </div>
       </article>
 
-      <article class="grid grid-cols-12 gap-6 items-start">
-        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">02</span></div>
-        <div class="col-span-10 sm:col-span-11">
-          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
-            Governance-by-design, not as an audit afterthought.
-          </h3>
-          <p class="mt-3 text-ink-muted leading-relaxed">
-            Eval harnesses, policy gates, lineage, and red-team coverage live in the
-            same repo as the agent graph. If it can't be measured and attested, it
-            doesn't ship to regulated customers.
+      <!-- Omni -->
+      <article class="chapter reveal" id="ventures">
+        <div class="chapter-meta">
+          <span class="years">2013 – 2019</span>
+          <span class="pill">Founder</span>
+          <span class="pill">Digital holding co.</span>
+        </div>
+        <div>
+          <h3>Omni Holding Company.</h3>
+          <p class="prose">
+            A digital holding company running a portfolio of online consumer brands. It
+            had an in-house build team, shared e-commerce and fulfillment
+            infrastructure, and SEO as a core growth channel. We built, marketed, and
+            scaled each brand end to end, and three were acquired.
           </p>
+          <div class="omni">
+            <figure class="frame">
+              <img src="omni-holding-site.png" alt="Omni Holding Company homepage: hero, focus areas, brands grid, about, and careers" loading="lazy" />
+              <figcaption><span>Omni Holding · homepage</span><span>Corporate site</span></figcaption>
+            </figure>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:12px"><p class="label">The portfolio</p><p class="label">09 brands</p></div>
+              <ul class="roster">
+                <li style="--c:#2f6fb0"><span class="sw"></span><span>Cogniflex<span class="acq">Acquired</span><span class="cat">Nootropic supplement</span></span><span class="tag">E-commerce</span></li>
+                <li style="--c:#5b9e7a"><span class="sw"></span><span>US Car Reports<span class="acq">Acquired</span><span class="cat">Automotive lead-gen</span></span><span class="tag">Content</span></li>
+                <li style="--c:#3c4848"><span class="sw"></span><span>Vortech<span class="acq">Acquired</span><span class="cat">Consumer electronics</span></span><span class="tag">E-commerce</span></li>
+                <li style="--c:#c89a7a"><span class="sw"></span><span>Mineral Mask<span class="cat">Skincare</span></span><span class="tag">DTC</span></li>
+                <li style="--c:#e4a517"><span class="sw"></span><span>Bright Guard<span class="cat">Consumer health</span></span><span class="tag">DTC</span></li>
+                <li style="--c:#4e2e35"><span class="sw"></span><span>Cinsay<span class="cat">Video commerce</span></span><span class="tag">Platform</span></li>
+                <li style="--c:#8a6b4f"><span class="sw"></span><span>Zymax<span class="cat">Performance supplement</span></span><span class="tag">DTC</span></li>
+                <li style="--c:#b69e71"><span class="sw"></span><span>Viral.US<span class="cat">Content &amp; distribution</span></span><span class="tag">Media</span></li>
+                <li style="--c:#7d8f6f"><span class="sw"></span><span>Daily Chill<span class="cat">Wellness</span></span><span class="tag">DTC</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </article>
 
-      <article class="grid grid-cols-12 gap-6 items-start">
-        <div class="col-span-2 sm:col-span-1 pt-2"><span class="label">03</span></div>
-        <div class="col-span-10 sm:col-span-11">
-          <h3 class="text-xl sm:text-2xl font-normal tracking-tight">
-            Human-centric orchestration. The expert stays in the loop.
-          </h3>
-          <p class="mt-3 text-ink-muted leading-relaxed">
-            The most valuable AI surfaces don't replace the professional — they
-            compound them. I build for the CPA, the analyst, the underwriter:
-            confidence over autonomy, traceability over magic.
+      <!-- Fitify -->
+      <article class="chapter reveal" id="fitify">
+        <div class="chapter-meta">
+          <span class="years">2018 – 2019</span>
+          <span class="pill">Co-founder</span>
+          <span class="pill">Vertical SaaS</span>
+        </div>
+        <div>
+          <h3>Fitify: a CRM for <em>fitness studios</em>.</h3>
+          <p class="prose">
+            An all-in-one studio management platform built to compete with Mindbody:
+            scheduling, check-in, point of sale, payroll, and reporting. It was the
+            complete operating system for a boutique fitness business.
           </p>
+          <figure class="frame media">
+            <img src="fitify-frontdesk.png" alt="Fitify front-desk check-in: a visual bike-grid seating layout for a spin class with booked, checked-in, and on-hold counts" loading="lazy" />
+            <figcaption><span>Fitify · front-desk check-in</span><span>Live class seating grid</span></figcaption>
+          </figure>
+          <div class="media-3">
+            <figure class="frame"><img src="fitify-dashboard.png" alt="Fitify dashboard: next class, today's revenue, daily schedule, new customers" loading="lazy" /><figcaption><span>Dashboard</span><span>Daily ops</span></figcaption></figure>
+            <figure class="frame"><img src="fitify-scheduler.png" alt="Fitify scheduler: weekly calendar of classes by instructor and room" loading="lazy" /><figcaption><span>Scheduler</span><span>Classes</span></figcaption></figure>
+            <figure class="frame"><img src="fitify-pos.png" alt="Fitify point of sale: customer profile, inventory, series, and contracts with cart" loading="lazy" /><figcaption><span>Point of sale</span><span>Retail</span></figcaption></figure>
+          </div>
+          <div class="trio">
+            <div><p class="label">The wedge</p><p>Mindbody owned the market, but studios complained about clunky tooling. Fitify rebuilt the daily front-desk workflow around speed.</p></div>
+            <div><p class="label">The product</p><p>Scheduler, visual class layouts, check-in, POS with inventory and class series, time clock, and reporting in one platform.</p></div>
+            <div><p class="label">The lesson</p><p>Vertical SaaS lives or dies on the boring operational surface. The bike-grid check-in was the feature that won demos.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- HodlFeed -->
+      <article class="chapter reveal" id="hodlfeed">
+        <div class="chapter-meta">
+          <span class="years">2018</span>
+          <span class="pill">Founder</span>
+          <span class="pill">Fintech</span>
+        </div>
+        <div>
+          <h3>HodlFeed: <em>crypto sentiment</em>, streamed.</h3>
+          <p class="prose">
+            A sentiment-analysis platform for crypto traders. It ran sentiment analysis
+            over a real-time news stream, then filtered and ranked the results so the
+            feed surfaced what was likely to move price. It was an early bet on the idea
+            behind all my AI work: machine intelligence triages the firehose so a
+            human can act.
+          </p>
+          <figure class="frame media">
+            <img src="hodlfeed-hero.jpeg" alt="HodlFeed homepage hero: Discover Crypto News that Actually Matters" loading="lazy" />
+            <figcaption><span>HodlFeed · homepage</span><span>Streaming sentiment feed</span></figcaption>
+          </figure>
         </div>
       </article>
 
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ─── Personal projects ─── -->
+  <section id="projects" class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label accent">Now building · personal projects</p>
+        <h2>Things I'm building <em>on the side</em>.</h2>
+        <p>
+          Small products I design and build end to end with Claude Code, to stay
+          close to the craft and test ideas about where AI earns a place in real work.
+        </p>
+      </div>
 
-<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
+      <div class="projects">
 
-<section id="work-teaser" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <article class="project reveal">
+          <a class="project-shot" href="https://pb3oh.github.io/Cairn/" aria-label="Open Cairn">
+            <img src="cairn.jpg" alt="Cairn homepage: The retirement you earned, fully claimed. A free 4-minute benefits review" loading="lazy" />
+          </a>
+          <div class="project-body">
+            <div class="project-top"><span class="label">2026 · Consumer</span><span class="pill live">Live prototype</span></div>
+            <h3>Cairn</h3>
+            <p class="one">A trail of markers through the Medicare maze.</p>
+            <p class="desc">
+              A 4-minute benefits review for U.S. retirees. Eleven plain-English questions
+              run against 14+ federal, state, and county eligibility rules and return a
+              personalized report, with apply links and field-by-field application
+              guides. Eight states are seeded with detailed program data.
+            </p>
+            <div class="stack"><span class="pill">React</span><span class="pill">Vite</span><span class="pill">Rules engine</span></div>
+            <div class="project-foot">
+              <a href="https://pb3oh.github.io/Cairn/" class="link">Try it ↗</a>
+              <a href="https://github.com/pb3oh/Cairn" class="link">Code ↗</a>
+            </div>
+          </div>
+        </article>
 
-  <div class="flex items-baseline justify-between mb-16">
-    <div>
-      <p class="label mb-4">§ 02</p>
-      <h2 class="text-3xl sm:text-4xl tracking-tight font-light">
-        Selected work.
-      </h2>
-      <p class="mt-4 max-w-xl text-ink-muted">
-        Four case studies, organized as one strategy: the expert platform, the
-        consumer surface, the distribution play, and a planning tool built
-        end-to-end.
-      </p>
+        <article class="project reveal">
+          <div class="project-shot">
+            <img src="curator.jpg" alt="Curator landing page: Stop scrolling. Start finding. The AI scores every eBay listing and surfaces the 5% worth your time" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-top"><span class="label">2026 · AI agent</span><span class="pill live">Beta</span></div>
+            <h3>Curator</h3>
+            <p class="one">An analyst, not an executor.</p>
+            <p class="desc">
+              AI triage for collectibles buyers. It cuts 40,000+ listings a week down to
+              the ~50 worth a human's attention. Deterministic checks and a
+              vision-enabled Claude reasoner score each listing; the person approves every
+              action. A label firewall keeps the evals honest.
+            </p>
+            <div class="stack"><span class="pill">Chrome extension</span><span class="pill">Claude + vision</span><span class="pill">Evals</span></div>
+            <div class="project-foot"><span class="muted">Private repo · demo on request</span></div>
+          </div>
+        </article>
+
+        <!--
+          To add a project, copy one of the <article class="project"> blocks above,
+          put its screenshot (1600×1000 works well) next to this file, and delete
+          this placeholder once the grid is full.
+        -->
+        <div class="project slot reveal" aria-hidden="true">
+          <span class="slot-mark">+</span>
+          <p class="label" style="margin-top:18px">Next up</p>
+          <p>Another experiment in progress.</p>
+        </div>
+
+      </div>
     </div>
-    <a href="./portfolio.html" class="hidden sm:inline-flex items-center gap-2 text-sm link text-ink">
-      All work <span class="text-base leading-none">↗</span>
-    </a>
-  </div>
+  </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-ink-line border border-ink-line">
-
-    <a href="./portfolio.html#iep" class="case bg-paper p-8 sm:p-10 group">
-      <p class="label">Case 01 · Platform</p>
-      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
-        Self-serve and assisted, <span class="font-serif italic">one experience</span>.
-      </h3>
-      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
-        Dissolving the boundary between doing it yourself and getting help — so
-        expertise and AI arrive inside the flow the customer is already in.
-      </p>
-      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
-        Read case study <span class="case-arrow">→</span>
-      </p>
-    </a>
-
-    <a href="./portfolio.html#omni" class="case bg-paper p-8 sm:p-10 group">
-      <p class="label">Case 02 · Consumer surface</p>
-      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
-        <span class="font-serif italic">Intuit Intelligence</span> for small business.
-      </h3>
-      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
-        Aligning the customer-facing assistant with the expert platform's
-        capability catalog and quality bar, so both behave consistently.
-      </p>
-      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
-        Read case study <span class="case-arrow">→</span>
-      </p>
-    </a>
-
-    <a href="./portfolio.html#third-party" class="case bg-paper p-8 sm:p-10 group">
-      <p class="label">Case 03 · Distribution</p>
-      <h3 class="mt-6 text-2xl tracking-tight font-light leading-tight">
-        Intuit inside <span class="font-serif italic">ChatGPT</span> &amp; <span class="font-serif italic">Claude</span>.
-      </h3>
-      <p class="mt-6 text-sm text-ink-muted leading-relaxed">
-        Headless, portable capabilities that make TurboTax and QuickBooks actionable
-        inside the AI assistants customers already use.
-      </p>
-      <p class="mt-8 text-sm font-medium inline-flex items-center gap-2">
-        Read case study <span class="case-arrow">→</span>
-      </p>
-    </a>
-
-  </div>
-
-  <div class="mt-10 sm:hidden">
-    <a href="./portfolio.html" class="link text-ink font-medium">View all case studies ↗</a>
-  </div>
-
-  <p class="mt-12 text-sm text-ink-muted max-w-2xl">
-    Plus the pre-Intuit track — <a href="./portfolio.html#diversyfund" class="link text-ink">VP of Product at DiversyFund</a>,
-    then the <a href="./portfolio.html#ventures" class="link text-ink">founder chapter</a>:
-    a digital holding company with nine consumer brands, a vertical SaaS CRM
-    for fitness studios, and a crypto sentiment platform.
-  </p>
-
-</section>
-
-<div class="max-w-6xl mx-auto px-6 sm:px-10"><div class="rule"></div></div>
-
-<section id="contact" class="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-24">
-  <div class="grid grid-cols-12 gap-y-10 sm:gap-x-12">
-
-    <div class="col-span-12 sm:col-span-7">
-      <p class="label mb-6">§ 03 · Now</p>
-      <h2 class="text-3xl sm:text-5xl tracking-tightest font-light leading-[1.05] max-w-3xl">
+  <!-- ─── Contact ─── -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <p class="label accent reveal">Now</p>
+      <h2 class="reveal" style="margin-top:20px">
         Leading product organizations
-        <span class="font-serif italic text-ink-muted" style="color: #B8542A">where the AI surface is the product.</span>
+        <em class="accent">where the AI surface is the product.</em>
       </h2>
-      <p class="mt-8 max-w-xl text-ink-muted leading-relaxed">
-        Today I lead 8 product managers across 10 scrum teams, distributed and remote —
-        coaching PMs, setting the operating model, and building the discovery and
-        experimentation practice the work runs on.
+      <p class="prose reveal">
+        Today I lead 8 product managers across 10 distributed scrum teams. I coach PMs,
+        set the operating model, and build the discovery and experimentation practice
+        the work runs on. If your team needs someone at the seam between probabilistic
+        intelligence and the humans who own the outcome, let's talk.
       </p>
-    </div>
-
-    <div class="col-span-12 sm:col-span-5 sm:pt-2">
-      <p class="label mb-4">Reach out</p>
-      <ul class="space-y-3 text-lg">
+      <ul class="contact-list reveal">
         <li><a href="mailto:philnb331@gmail.com" class="link">philnb331@gmail.com</a></li>
-        <li><a href="https://github.com/pb3oh" class="link">github.com/pb3oh</a></li>
-        <li><a href="https://www.linkedin.com/in/phil-b-b0586147" class="link">linkedin.com/in/phil-b-b0586147</a></li>
+        <li><a href="https://www.linkedin.com/in/phil-b-b0586147" class="link">LinkedIn ↗</a></li>
+        <li><a href="https://github.com/pb3oh" class="link">GitHub ↗</a></li>
       </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
-  <div class="rule mb-6"></div>
-  <div class="flex flex-wrap items-center justify-between gap-4 text-xs text-ink-faint">
+</main>
+
+<footer class="wrap">
+  <div class="footer">
     <p>© 2026 Phillip. Details generalized where under NDA.</p>
-    <p class="font-mono">last updated Jul 2026</p>
+    <p class="mono">last updated Sep 2026</p>
   </div>
 </footer>
 
 <script>
   (function () {
-    const nav = document.querySelector('.site-nav');
+    const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // Reveal on scroll
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); }
+    else {
+      const io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }), { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(e => io.observe(e));
+    }
+
+    // Highlight the current section in the nav
+    const links = document.querySelectorAll('.nav-links a');
+    const spy = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }), { rootMargin: '-40% 0px -55% 0px' });
+    ['iep', 'before', 'projects', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
   })();
 </script>
 
