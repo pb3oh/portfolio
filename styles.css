@@ -101,7 +101,7 @@ em, .serif { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .hero-meta .link:hover { color: var(--ink); }
 
 .facts {
-  margin-top: clamp(56px, 8vw, 80px); display: grid; grid-template-columns: repeat(4, 1fr);
+  margin-top: clamp(56px, 8vw, 80px); display: grid; grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line);
 }
 .fact { padding: 20px 20px 0 0; }
