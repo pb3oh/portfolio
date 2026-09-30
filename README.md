@@ -2,13 +2,13 @@
 
 Personal portfolio site. A single static page, no build step.
 
-- `index.html` — the whole site: hero, the AI-native Intuit Expert Platform (with the Dependency Planner prototype), the pre-Intuit track (DiversyFund, Omni, Fitify, HodlFeed), personal projects, and contact.
+- `index.html` — the whole site, written as a blog-style timeline, newest first: Curator, Cairn, Intuit (with the Dependency Planner prototype), DiversyFund, Fitify, HodlFeed, Omni. Each entry pairs the work with a "What it gave me" note.
 - `styles.css` — all styles. Colors are CSS variables at the top of the file; dark mode follows the visitor's system setting.
 - `portfolio.html` — redirect only. Old links such as `portfolio.html#diversyfund` forward to the matching section of `index.html`.
 - Images live alongside the pages in this folder.
 
-## Adding a personal project
-In `index.html`, find the `#projects` section, copy one of the `<article class="project">` cards, and drop a screenshot (1600×1000 works well) into this folder. The dashed "Next up" card is a placeholder; delete it once the grid is full.
+## Adding an entry
+In `index.html`, copy an `<article class="entry">` block and paste it at the top of the timeline (newest first), then add a matching line to the archive list in the masthead. Screenshots at 1600×1000 work well.
 
 ## Local preview
 ```bash
