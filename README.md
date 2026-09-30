@@ -8,7 +8,7 @@ Personal portfolio site. A single static page, no build step.
 - Images live alongside the pages in this folder.
 
 ## Adding an entry
-In `index.html`, copy an `<article class="entry">` block and paste it at the top of the timeline (newest first), then add a matching line to the archive list in the masthead. Screenshots at 1600×1000 work well.
+In `index.html`, copy an `<article class="entry">` block and paste it at the top of the timeline (newest first). Screenshots at 1600×1000 work well.
 
 ## Local preview
 ```bash
