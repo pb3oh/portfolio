@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Phillip — Product Leadership</title>
-<meta name="description" content="A running log of what Phillip has built, newest first: Curator, Cairn, the copilot and AI-native infrastructure at Intuit, DiversyFund, and the founder years before that." />
+<meta name="description" content="A running log of what Phillip has built, newest first: Curator, Cairn, the AI-native Intuit Expert Platform, DiversyFund, and the founder years before that." />
 <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)" />
 <script>document.documentElement.classList.add('js')</script>
@@ -146,6 +146,42 @@
       </div>
     </article>
 
+    <!-- ─── Dependency Planner ─── -->
+    <article class="entry reveal" id="planner">
+      <div class="entry-date"><div class="sticky">
+        <span class="year">2026</span>
+        <span class="span">Prototype</span>
+        <span class="pill">Built with Claude Code</span>
+      </div></div>
+      <div>
+        <div class="entry-kind"><span class="label accent">Internal tool · AI triage</span></div>
+        <h2>The <em>Dependency Planner</em></h2>
+        <p class="dek">AI applied to how my own teams plan.</p>
+
+        <div class="gave">
+          <p class="label accent">What it gave me</p>
+          <p>Hands-on proof that the tooling I ask teams to adopt can change how a product org runs, starting with mine.</p>
+        </div>
+
+        <figure class="frame tall">
+          <img src="vep-item-detail.png" alt="Dependency Planner item detail with an AI evaluation panel showing score, risks, and open questions" loading="lazy" />
+          <figcaption><span>Planner · item detail</span><span>AI score · risks · open questions</span></figcaption>
+        </figure>
+
+        <div class="post">
+          <p>
+            Stakeholders submit dependency requests, and Claude triages them: it scores
+            each one from 0 to 100, assigns priority, surfaces risks and open questions,
+            and pushes accepted items to Jira. Paste in a PRD and the intake form fills
+            itself; a planning-advisor chat answers questions about the roadmap. A
+            flooded intake queue becomes a ranked plan, and PMs spend their time on
+            judgment calls instead of sorting the queue.
+          </p>
+        </div>
+        <div class="stack"><span class="pill">Claude</span><span class="pill">Jira integration</span><span class="pill">Document extraction</span></div>
+      </div>
+    </article>
+
     <!-- ─── Intuit ─── -->
     <article class="entry reveal" id="intuit">
       <div class="entry-date"><div class="sticky">
@@ -155,8 +191,8 @@
       </div></div>
       <div>
         <div class="entry-kind"><span class="label accent">Intuit · DIY &amp; Expert Experiences</span></div>
-        <h2>A <em>copilot</em> built into the Intuit Expert Platform.</h2>
-        <p class="dek">And the AI-native tooling and infrastructure we built with it.</p>
+        <h2>Reinventing the Intuit Expert Platform <em>as AI-native</em>.</h2>
+        <p class="dek">Led end to end, and accountable for AI adoption.</p>
 
         <div class="gave">
           <p class="label accent">What it gave me</p>
@@ -165,53 +201,34 @@
 
         <div class="post">
           <p>
-            Intuit's tax and bookkeeping experts were working across a dozen tools, doing
-            the integration work in their heads. I led the copilot built into the expert
-            platform: one assistant inside the workspace, where the AI drafts the work and
-            the expert reviews, corrects, and coaches it.
+            Intuit's tax and bookkeeping experts were working across a dozen tools,
+            doing the integration work in their heads. I led the effort to rebuild the
+            expert platform as AI-native, end to end, and I was accountable for the
+            outcome that mattered most: whether experts actually adopted the AI.
           </p>
           <p>
-            A copilot is only as good as what sits underneath it, so we built the
-            AI-native tooling and infrastructure alongside it: a shared capability layer
-            that any surface can call, and an evaluation practice that gates every
-            release. All of it shipped across tax and bookkeeping, a regulated domain
-            where every change clears compliance, security, and legal review.
+            The copilot was one of the core changes, but not the only one. Just as
+            important was how AI showed up everywhere else in the product, and the
+            infrastructure and tooling that let us ship it safely. All of it shipped in
+            a regulated domain, where every change clears compliance, security, and
+            legal review.
           </p>
+          <h3>What my team owned</h3>
         </div>
+        <ol class="points three">
+          <li><span class="num">01 · Copilot</span><h4>A copilot in the workspace</h4><p>The AI drafts; the expert reviews, corrects, and coaches. We proved it on one narrow, high-frequency workflow before generalizing.</p></li>
+          <li><span class="num">02 · Adoption</span><h4>AI woven into the UI</h4><p>Orchestrating how AI experiences surface across the platform, inside the flows experts already use, so adoption was designed in rather than hoped for.</p></li>
+          <li><span class="num">03 · Infrastructure</span><h4>The tooling underneath</h4><p>A shared capability layer any surface can call, and an evaluation practice (human ratings calibrating an automated judge) that gates every release.</p></li>
+        </ol>
 
         <div class="pull">
           <p class="label accent">The bet</p>
-          <p class="quote">Everyone else was adding AI to the tools experts already had. <em>We argued for taking the tools away.</em></p>
+          <p class="quote">Everyone else was adding AI to the tools experts already had. <em>We argued for rebuilding the platform around it.</em></p>
           <p>
             A dozen surfaces, each a little smarter, still leave an expert doing the
-            integration work in their head. One assistant meant a harder build and a
+            integration work in their head. Going AI-native meant a harder build and a
             slower start, in exchange for the only version of this that compounds.
           </p>
-        </div>
-
-        <div class="post"><h3>Four decisions that shaped it</h3></div>
-        <ol class="points">
-          <li><span class="num">01 · Copilot</span><h4>An assistant, not another tool</h4><p>One copilot meant fewer, better entry points: a platform bet instead of a feature bet.</p></li>
-          <li><span class="num">02 · Copilot</span><h4>The expert supervises the AI</h4><p>The AI drafts; the expert reviews, corrects, and coaches. Proven on one narrow, high-frequency workflow before generalizing.</p></li>
-          <li><span class="num">03 · Infrastructure</span><h4>Build once, serve anywhere</h4><p>Capabilities built as portable services, so the same capability serves the copilot, adjacent surfaces, and third-party assistants.</p></li>
-          <li><span class="num">04 · Infrastructure</span><h4>Nothing ships without a bar</h4><p>Human ratings calibrate an automated judge; the judge makes continuous measurement affordable. Evaluation as product, not QA.</p></li>
-        </ol>
-
-        <div class="aside" id="planner">
-          <figure class="frame">
-            <img src="vep-item-detail.png" alt="Dependency Planner item detail with an AI evaluation panel showing score, risks, and open questions" loading="lazy" />
-            <figcaption><span>Planner · item detail</span><span>AI triage</span></figcaption>
-          </figure>
-          <div>
-            <span class="pill accent">Prototype · built with Claude Code</span>
-            <h4>The <em>Dependency Planner</em></h4>
-            <p>
-              Applying the same tooling to how my own teams plan. Claude scores incoming
-              dependency requests, surfaces risks and open questions, and pushes accepted
-              items to Jira, so PMs spend their time on judgment calls instead of
-              sorting the queue.
-            </p>
-          </div>
         </div>
         <p class="note">Details generalized where under NDA.</p>
       </div>
